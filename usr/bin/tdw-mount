@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo mount /dev/disk/by-id/usb-SanDisk_SanDisk_Cruzer_1233520A8010FB37-0:0-part1 /media/floppy

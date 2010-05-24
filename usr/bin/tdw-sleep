@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+chdir "/home/troy/audio";
+system("mplayer -loop 0 -shuffle * >/dev/null 2>/dev/null &");
+exec "/usr/bin/tdw-audio-sleep";

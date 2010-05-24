@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+use IO::Socket;
+my $ip_address = `ip addr show dev wlan0 | grep wlan0 | grep inet`;
+
+my $sock = new IO::Socket::INET(
+    PeerAddr => '192.168.1.5',
+    PeerPort => '7070',
+    Proto    => 'tcp',
+    );
+
+die "Could not create socket: $!\n" unless $sock;
+print $sock $ip_address;
+# close($sock);

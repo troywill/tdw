@@ -1,0 +1,18 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+# troydwill@gmail.com, January 2010
+
+my $NET_DEVICE='eth1';
+
+sub down {
+    system("/sbin/ip link set ${NET_DEVICE} down");
+}
+
+sub up {
+     system("/sbin/ip link set ${NET_DEVICE} up");
+     system("/sbin/dhcpcd ${NET_DEVICE}");
+}
+
+&down;
+&up;

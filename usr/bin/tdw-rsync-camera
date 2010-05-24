@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+my $server = '192.168.1.5';
+my $dest = $ENV{'HOME'} . '/camera';
+
+print "==>$dest<==\n";
+chdir $ENV{'HOME'};
+
+my $shell_command = "rsync -a --progress --delete ${server}::camera $dest";
+print "==>$shell_command<==", "\n";
+system $shell_command;
+

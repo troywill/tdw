@@ -1,0 +1,17 @@
+#!/bin/bash
+SOURCE="/media/floppy/4gSurf/stow/tdw/"
+TARGET="/stow/tdw/"
+
+cd ${TARGET}
+ls
+sleep 3
+
+rsync -av \
+    --exclude '*~' \
+    ${SOURCE} ${TARGET}
+
+echo "Sleep 10 for safety" && sleep 10
+
+rsync -av --delete \
+    --exclude '*~' \
+    ${SOURCE} ${TARGET}

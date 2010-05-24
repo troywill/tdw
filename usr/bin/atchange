@@ -1,0 +1,70 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+$0 =~ s(.*/)();    # basename
+my $usage = "usage: $0 filename cmd | $0 command_file";
+@ARGV || die $usage;    # check for proper invocation
+
+# This allows the .cshrc to know that atchange has called it:
+$ENV{'PERLCSH'} = "TRUE";
+
+# Haefner Suggestion 1999 Dec 18:
+##if default SHELL is sh or csh or tcsh use the following line
+###$shell = $ENV{"SHELL"} ? $ENV{"SHELL"} : "/bin/sh";
+##if default SHELL is bash (eg, Linux) use the following line
+# 1999 Dec 28 - this is not a good idea - untestable by me
+# $shell = "/bin/csh";
+
+my $shell = $ENV{"SHELL"} ? $ENV{"SHELL"} : "/bin/sh";
+open( SHELL, "|$shell" ) || die "Can't pipe to $shell: $!";
+select(SHELL);
+$| = 1;
+
+my %cmd;
+my %old;
+my $file;
+
+if ( @ARGV > 1 ) {    # it's a file and a command
+    $file = shift;    # peel off the filename
+    $cmd{$file} = join( " ", @ARGV ) . "\n";    # and the command
+    $old{$file} = ( stat($file) )[9];           # mod time.
+}
+else {                                          # it's a program
+    open( PGM, shift ) || die "Can't open $_: $!";
+    $/ = "";                                    # paragraph mode
+    while (<PGM>) {                             # first read the program
+        s/#.*\n/\n/g;
+        ( $file, my $cmd ) = /(\S*)\s+([^\000]+)/;
+        $cmd{$file} = $cmd;
+        unless ($file) { print $cmd{$file}; next; }
+        if ( $file && !$cmd{$file} ) { warn "odd line"; next; }
+        $old{$file} = ( stat($file) )[9];       # mod time.
+    }
+}
+
+while (1) {
+
+    select( undef, undef, undef, 0.25 );        # wait a quarter second, then
+    foreach ( keys %cmd ) {                     # rip through the whole list
+        atchange($_);
+    }
+}
+close(SHELL);
+
+sub atchange {    # if $file has changed, do $cmd{$file}
+    my ($file) = @_;
+    my ($new);
+
+    $new = ( stat($file) )[9];
+    return 0 if ( $old{$file} == $new );
+    while (1) {    # wait until it stops changing
+        $old{$file} = $new;
+        sleep 1;
+        $new = ( stat($file) )[9];
+        if ( $old{$file} == $new ) {
+            print $cmd{$file};
+            return 1;
+        }
+    }
+}

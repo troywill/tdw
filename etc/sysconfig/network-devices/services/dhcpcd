@@ -1,0 +1,112 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+exit;
+my $interface = $ARGV[0];
+my $action = $ARGV[1];
+
+open(DEBUG,">>/tmp/dhcpcd.DEBUG");
+print DEBUG "interface is $interface\n";
+print DEBUG "action is $action\n";
+if ( $interface eq 'eth1' ) {
+    print DEBUG "Exiting: interface is $interface\n";
+    exit;
+}
+if ( $interface eq 'wlan0' ) {
+    system("tdw-wireless-up");
+    system("/sbin/dhcpcd wlan0");
+}
+exit;
+# #!/bin/sh
+# echo `date` >> /tmp/TDW-DEBUG
+# . /etc/sysconfig/rc
+# . $rc_functions
+# . $IFCONFIG
+# PIDFILE="/var/run/dhcpcd-$1.pid"
+# LEASEINFO="/var/lib/dhcpcd/dhcpcd-$1.info"
+# eth1operstate=`cat /sys/class/net/eth1/operstate`
+# tdw-wireless-up
+
+# case "$2" in
+#     up)
+# 	case "$1" in
+# 	    "eth1")
+# 		eth1operstate=`cat /sys/class/net/eth1/operstate`
+# 		case "$eth1operstate" in
+# 		    'down')
+# 			echo "DEBUG: /etc/sysconfig/network-devices/services/dhcpcd => Exiting: pointless to run dhcpd eth1 if eth1 is down"
+# 			exit 2
+# 			;;
+# 		esac
+# 	esac
+# 	boot_mesg -n "Starting dhcpcd on the $1 interface..."
+# 		# Test to see if there is a stale pid file
+# 	if [ -f "$PIDFILE" ]
+# 	then
+# 	    ps `cat "$PIDFILE"` | grep dhcpcd > /dev/null
+# 	    if [ $? != 0 ]
+# 	    then
+# 		rm -f $PIDFILE > /dev/null
+# 	    else
+# 		boot_mesg "dhcpcd already running!" ${WARNING}
+# 		echo_warning
+# 		exit 2
+# 	    fi
+# 	fi
+# 	/sbin/dhcpcd $1 $DHCP_START
+# 		# Save the return value
+# 	RET="$?"
+# 		# Print the assigned settings if requested
+# 	if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
+# 	    . $LEASEINFO
+# 	    if [ "$PRINTALL" = "yes" ]; then
+# 		echo ""
+# 		echo_ok
+# 		boot_mesg "           DHCP Assigned Settings for $1:"
+# 		boot_mesg_flush
+# 		boot_mesg "           IP Address:      $IPADDR"
+# 		boot_mesg_flush
+# 		boot_mesg "           Subnet Mask:     $NETMASK"
+# 		boot_mesg_flush
+# 		boot_mesg "           Default Gateway: $GATEWAYS"
+# 		boot_mesg_flush
+# 		boot_mesg "           DNS Server:      $DNSSERVERS"
+# 		boot_mesg_flush
+# 	    else
+# 		boot_mesg " IP Addresss: $IPADDR"
+# 		echo_ok
+# 	    fi
+# 	else
+# 	    echo ""
+# 	    $(exit "$RET")
+# 	    evaluate_retval
+# 	fi
+# 	;;
+
+#     down)
+# 	boot_mesg -n "Stopping dhcpcd on the $1 interface..."
+# 	if [ -z "$DHCP_STOP" ]
+# 	then
+# 	    echo ""
+# 	    killproc -p "$PIDFILE" /sbin/dhcpcd
+# 	else
+# 	    /sbin/dhcpcd $1 $DHCP_STOP &> /dev/null
+# 	    RET="$?"
+# 	    if [ "$RET" -eq 0 ]; then
+# 		echo ""
+# 		echo_ok
+# 	    elif [ "$RET" -eq 1 ]; then
+# 		boot_mesg "dhcpcd not running!" ${WARNING}
+# 		echo_warning
+# 	    else
+# 		echo ""
+# 		echo_failure
+# 	    fi
+# 	fi
+# 	;;
+
+#     *)
+# 	echo "Usage: $0 [interface] {up|down}"
+# 	exit 1
+# 	;;
+# esac

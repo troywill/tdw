@@ -1,0 +1,11 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my $device = '/dev/sdb1';
+my $dir = '/media/sandisk';
+my $sudo_command = 'sudo';
+
+my $mount_command = "$sudo_command mount -v $device $dir";
+
+system $mount_command;

@@ -1,0 +1,11 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+# debug
+
+chomp(my $terminal_name = `tty`);
+if ( $terminal_name eq '/dev/tty3' ) {
+    system('sudo mount /dev/sdb1 /mnt/sdb1');
+    system('sudo mount /dev/sdb2 /mnt/sdb2');
+    `startx`;
+}

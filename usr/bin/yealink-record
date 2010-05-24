@@ -1,0 +1,81 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Term::ReadKey;
+print "Press q to quit\n";
+
+my $ps = "-01";
+my $size_to_cut = 2 * 1024;
+my $phrase = "";
+
+ReadMode 4;    # Turn off controls keys
+
+while (1) {
+    my $key1 = ReadKey(-1);
+    my $key2 = ReadKey(-1);
+    my $key3 = ReadKey(-1);
+    my $action = '';
+    if ( defined($key1) ) {
+        $action = &process_key( $key1, $key2, $key3 );
+    }
+    if ( $action eq 'record' ) {
+	chomp( $phrase = `date +%Y%m%d-%H%M%S`);
+	select( undef, undef, undef, 0.25 );
+	&arecord ($phrase);
+	$ps = &get_ps;
+	print "DEBUG: I am recording, arecord process id: $ps\n";
+    }
+    if ( $action eq 'stop' ) {
+	print "DEBUG: killing process $ps\n";
+	system("kill -15 $ps");
+	system("ps aux > /tmp/psaux");
+	# compress
+	&truncate( $phrase, $size_to_cut );
+    }
+    select(undef,undef,undef,0.1);
+}
+ReadMode 1;    # Change to cooked mode.
+
+sub truncate {
+    my ( $phrase, $bytes_to_chomp )  = @_;
+    my $file = $phrase . ".wav";
+    my $size = (stat($file))[7];
+    print "DEBUG: \n\n\n\n\n$file, $size, $bytes_to_chomp\n";
+    open( my $in, "+<", $file) or die "unable to open file $file: $!";
+    print "DEBUG: \n\n\n\n\n$file, $size, $bytes_to_chomp\n";
+    truncate( $in, ( $size - $bytes_to_chomp ) );
+    close( $in ) or die "unable to close file $in: $!";
+}
+
+sub arecord {
+  my $phrase = shift;
+  #  system("arecord -D plughw:default -f cd -t wav $phrase.wav >& /dev/null &");
+  my $command = "arecord -D plughw:default -f cd -t wav $phrase.wav >& /dev/null &";
+  $command = "arecord --device plughw:default --rate 8000 --format S16_LE --file-type wav $phrase.wav >& /dev/null &";
+  system($command);
+}
+
+sub get_ps {
+  my $ps = `ps aux | grep -v grep | grep arecord | cut -c 10-15`;
+  chomp $ps;
+  print "DEBUG: ps is $ps\n";
+  return $ps;
+}
+
+sub process_key {
+    my ( $char1, $char2, $char3 ) = @_;
+    if ( !defined $char2 ) {
+	return 'stop' if ord($char1) == 27;
+	return 'record' if ord($char1) == 10;
+    }
+    if ( defined $char2 ) {
+	print "Extra!\n";
+    }
+    print "[ $char1 ] ->  [", ord($char1), "]\n";
+    print "char 2 is $char2\n" if defined $char2;
+    print "char 3 is $char3\n" if defined $char3;
+    if ( ( $char1 eq 'Q' ) || ( $char1 eq 'q' ) || ( ord($char1) == 127 ) ) {
+	ReadMode 1;    # Change to cooked mode.
+	exit;
+    }
+}

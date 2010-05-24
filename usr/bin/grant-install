@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Cwd;
+
+##########################################################
+my $SRC_DIR = "foo";
+my $STOW_BASE = '/usr/local/stow';
+my @packages = ( 'rsync', 'atchange', 'zlib', 'openssl');
+my $RSYNC_BASE = 'rsync -av claremont::sources/gbuilds';
+# Git: zlib, openssl
+# OpenSSH: openssl
+# Sudo: PAM
+# PAM: Shadow?, Flex
+# Flex: m4
+##########################################################
+print "\n-----------------------------------------------\n";
+foreach my $package ( @packages ) {
+    print "|$package";
+}
+print "|\n";
+
+my $package = &extract_package_name (&Cwd::cwd());
+my $gbuild = "$package.gbuild";
+&fetch_build_script($gbuild);
+&run_build_script($gbuild);
+
+####### Subroutines only below this line ######
+
+sub run_build_script {
+    my $gbuild = shift;
+    system("./$gbuild");
+}
+
+sub fetch_build_script {
+    my $gbuild = shift;
+    print "in fetch_build_script ... \n";
+    print "fetching $package.gbuild\n";
+    system("$RSYNC_BASE/$gbuild .");
+}
+sub extract_package_name {
+    my $currWorkDir = shift;
+    print "\nCWD = $currWorkDir\n";
+    $currWorkDir =~ m/.*\/([^\/]+)$/;
+    my $package_name = $1;
+    return $package_name;
+}

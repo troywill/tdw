@@ -1,0 +1,18 @@
+#!/bin/bash
+cd /media/floppy/4gSurf
+ls
+sleep 3
+
+SOURCE="/"
+TARGET="."
+EXCLUDE="'*media*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/dev/*'"
+
+sudo rsync -av \
+    --exclude '*~' --exclude '/media/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/dev/*' --exclude '/mnt/*' \
+    ${SOURCE} ${TARGET}
+
+echo "Sleep 10 for safety" && sleep 10
+
+sudo rsync -av --delete \
+    --exclude '*~' --exclude '/media/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/dev/*' --exclude '/mnt/*' \
+    ${SOURCE} ${TARGET}

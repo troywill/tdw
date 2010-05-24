@@ -1,0 +1,40 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+# troydwill@gmail.com, December 2009
+
+my $WIRELESS_DEVICE='wlan0';
+my $ESSID='JM';
+my $KEY='D21B5074EA';
+my $MY_IP_ADDRESS='192.168.1.39';
+my $GATEWAY_IP_ADDRESS='192.168.1.1';
+
+sub down {
+    system("/sbin/ip link set eth1 down");
+    system("/sbin/ip link set ${WIRELESS_DEVICE} down");
+    system("/sbin/ip route del default via ${GATEWAY_IP_ADDRESS} dev ${WIRELESS_DEVICE}");
+    system("/sbin/ip addr del ${MY_IP_ADDRESS}/24 broadcast 192.168.1.255 dev ${WIRELESS_DEVICE}");
+}
+
+sub up {
+    print "DEBUG\n";
+    system("/sbin/ip link set ${WIRELESS_DEVICE} up");
+    system("/usr/sbin/iwconfig ${WIRELESS_DEVICE} essid ${ESSID}");
+    system("/usr/sbin/iwconfig ${WIRELESS_DEVICE} key ${KEY}");
+    system("/usr/sbin/dhcpcd ${WIRELESS_DEVICE}");
+#    system("/sbin/ip addr add ${MY_IP_ADDRESS}/24 broadcast 192.168.1.255 dev ${WIRELESS_DEVICE}");
+#    system("/sbin/ip route add default via ${GATEWAY_IP_ADDRESS} dev ${WIRELESS_DEVICE}");
+}
+
+my $network_status = &get_network_status($WIRELESS_DEVICE);
+
+sub get_network_status {
+    chomp(my $network_status = `cat /sys/class/net/wlan0/operstate`);
+    return $network_status;
+}
+
+if ( $network_status eq 'up' ) {
+    exit;
+} else {
+    &up;
+}

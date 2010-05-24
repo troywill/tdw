@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+my $interval = 300;
+my $audio_file = $ARGV[0];
+my $i = $ARGV[1] -1;
+my $action = $ARGV[2];
+
+my $ss = ($i) * $interval;
+my $endpos = $interval;
+my  $mplayer = "mplayer -ss $ss -endpos $endpos $audio_file";
+
+print $mplayer, "\n";
+print "======================== $action =========================\n";
+
+`$mplayer`;

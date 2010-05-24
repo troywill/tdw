@@ -1,0 +1,104 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+use ConfigReader::Simple;
+
+my $CHANNEL = 'auto';
+# Use sudo if we are not root
+my $SUDO = '';
+$SUDO = 'sudo' if ( $ENV{'USER'} ne 'root' );
+my $config = ConfigReader::Simple->new( '/etc/wireless.cfg' );
+
+my $ESSID_HOME = $config->get( 'ESSID_HOME' );
+my $KEY_HOME = $config->get( 'KEY_HOME' );
+my $ESSID_OFFICE = $config->get( 'ESSID_OFFICE' );
+my $KEY_OFFICE = $config->get( 'KEY_OFFICE' );
+
+my ( $essid, $key ) = &find_location ( $ESSID_HOME, $ESSID_OFFICE );
+
+sub find_location () {
+    my ( $essid_home, $essid_office ) = @_;
+    my $slurp = `sudo iwlist scanning | grep ESSID`;
+    if (  $slurp =~ m/RoadRunner/ ) {
+	print "Home!\n";
+	return ( $ESSID_HOME, $KEY_HOME );
+    }
+}
+
+# Is wireless wlan0 or wlan1?
+my $WIRELESS_DEVICE = &get_wireless_interface();
+my $wireless_state = &get_wireless_operstate ($WIRELESS_DEVICE);
+my $link_command = "$SUDO /sbin/ip link set $WIRELESS_DEVICE up";
+my $wireless_carrier = &get_wireless_carrier ($WIRELESS_DEVICE);
+for (1..10) {
+    my $network_status = &get_wireless_carrier($WIRELESS_DEVICE);
+    if ( &get_wireless_carrier($WIRELESS_DEVICE) == 1 ) {
+	print ".";
+	sleep 1;
+    } else {
+	&up($essid, $key);
+	sleep 1;
+    }
+}
+
+sub up {
+    my ( $essid, $key ) = @_;
+    my $link_command = "$SUDO /sbin/ip link set $WIRELESS_DEVICE up";
+    print "$link_command\n";
+    system $link_command;
+    my $iwconfig = "$SUDO /usr/sbin/iwconfig $WIRELESS_DEVICE essid \'$essid\' key $key channel $CHANNEL";
+    system $iwconfig;
+    print $iwconfig, "\n";
+}
+
+
+exit;
+
+if ( $wireless_state eq 'down' ) {
+    &up;
+}
+
+
+sub get_wireless_operstate {
+    my $wireless_device = shift;
+    chomp(my $operstate = `cat /sys/class/net/$wireless_device/operstate`);
+    return $operstate;
+}
+
+sub get_wireless_carrier {
+    my $wireless_device = shift;
+    chomp(my $carrier = `cat /sys/class/net/$wireless_device/carrier`);
+    return $carrier;
+}
+
+# Is wireless wlan0 or wlan1?
+sub get_wireless_interface {
+    if ( -e '/sys/class/net/wlan0/address' ) {
+	my $wlan0_address = `cat /sys/class/net/wlan0/address`;
+	$WIRELESS_DEVICE = 'wlan0';
+    } elsif ( -e '/sys/class/net/wlan1/address' ) {
+	$WIRELESS_DEVICE = 'wlan1';
+    } else {
+	$WIRELESS_DEVICE = '';
+    }		
+    return $WIRELESS_DEVICE;
+}
+
+sub down {
+    system("$SUDO /sbin/ip link set $WIRELESS_DEVICE down");
+}
+
+__END__
+
+# troydwill@gmail.com, April 2010
+
+# $KEY='hojo1claremont';
+my $MY_IP_ADDRESS='192.168.1.79';
+my $GATEWAY_IP_ADDRESS='192.168.1.1';
+
+sub down {
+    system("/sbin/ip link set eth1 down");
+    system("/sbin/ip link set $WIRELESS_DEVICE down");
+    system("/sbin/ip route del default via $GATEWAY_IP_ADDRESS dev ${WIRELESS_DEVICE}");
+    system("/sbin/ip addr del ${MY_IP_ADDRESS}/24 broadcast 192.168.1.255 dev ${WIRELESS_DEVICE}");
+}

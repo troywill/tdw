@@ -1,0 +1,18 @@
+#!/bin/bash
+cd /media/floppy/4gSurf
+SOURCE="."
+TARGET="/"
+
+echo ">>> " `pwd`
+ls
+echo ">>> Sleeping 5 seconds for safety" && sleep 5
+sudo rsync -a --progress --exclude '/media/floppy/*' \
+    --exclude '/proc/*' --exclude '/sys/*' --exclude '/dev/*' \
+    ${SOURCE} ${TARGET}
+
+echo ">>> Sleeping 10 seconds for safety" && sleep 10
+
+sudo rsync -a --delete \
+    --progress --exclude '/media/floppy/*' \
+    --exclude '/proc/*' --exclude '/sys/*' --exclude '/dev/*' \
+    ${SOURCE} ${TARGET}

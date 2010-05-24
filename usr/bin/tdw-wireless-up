@@ -1,0 +1,39 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+# troydwill@gmail.com, January 2010
+
+my $WIRELESS_DEVICE='wlan0';
+my $ESSID='JM';
+my $KEY='D21B5074EA';
+
+my $network_status = &get_wireless_status();
+print "=> Operating state of wireless: $network_status\n";
+
+# How many iterations before we give up
+my $break_count = 0;
+while ( $network_status eq 'down' && $break_count++ < 10 ) {
+    &up;
+    $network_status = &get_wireless_status();
+    print "=> Operating state of wireless: $network_status\n";
+    sleep 1;
+}
+
+sub up {
+    my $command_1 = "/sbin/ip link set ${WIRELESS_DEVICE} up";
+    my $command_2 = "/usr/sbin/iwconfig ${WIRELESS_DEVICE} essid ${ESSID}";
+    my $command_3 = "/usr/sbin/iwconfig ${WIRELESS_DEVICE} key ${KEY}";
+    print "=> $command_1\n";
+    system $command_1;
+    print "=> $command_2\n";
+    system $command_2;
+    print "=> $command_3\n";
+    system $command_3;
+}
+
+sub get_wireless_status {
+    chomp(my $network_status = `cat /sys/class/net/wlan0/operstate`);
+    `echo $network_status >> /tmp/tdw-wireless-up`;
+    return $network_status;
+}
+# linksys_SES_38574

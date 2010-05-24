@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+my $bwlimit = $ARGV[0] || 80;
+
+my $server = '192.168.1.5';
+my $dest = $ENV{'HOME'} . '/video/*';
+$dest = '.';
+print "==>$dest<==\n";
+# chdir $ENV{'HOME'};
+
+my $shell_command = "rsync -a --bwlimit $bwlimit --progress --delete ${server}::video/* .";
+print "==>$shell_command<==", "\n";
+system $shell_command;

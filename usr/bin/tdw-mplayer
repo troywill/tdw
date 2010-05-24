@@ -1,0 +1,18 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my ( $xmax, $ymax ) = ( 700, 400 );
+my ( $width, $height ) = ( 156, 88 );
+
+my $x = $xmax - ($width/2);
+my $y = $ymax - ($height/2);
+
+my $file = '/media/sandisk/video/NCIS.Los.Angeles.S01E09.Random.on.Purpose.HDTV.XviD-FQM.\[VTV\].avi';
+
+my $shell_command = "mplayer -geometry ${width}x${height}+$x+$y $file";
+
+system $shell_command;
+print $shell_command;
+
+

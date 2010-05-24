@@ -1,0 +1,63 @@
+#!/bin/bash
+HOME="/home/troy"
+EDITOR="emacs"
+
+# Networking aliases
+n () {
+    tdw-wireless-daemon
+}
+# alias n='tdw-wireless-daemon'
+
+# Change directory functions
+
+t-csv () {
+    cd ${HOME}/rcs/stowball/data/shilohSchema/2010_spring/csv
+    git pull
+    /bin/ls --color
+}
+
+t-scripts () {
+    cd /var/lib/stowball/data/scripts
+    /bin/ls --color
+}
+
+u () {
+    cd ${HOME}/rcs/stowball/utilities
+    /bin/ls --color
+}
+
+eb () {
+    BASHRC="$HOME/.bashrc"
+    $EDITOR $BASHRC && source $BASHRC
+}
+
+tz () {
+    echo "tar -xf $1" && tar -xf $1
+}
+
+# git functions
+
+ga () {
+    echo "==> git add $1"
+    git add $1
+}
+
+alias ebd='pwd >> /etc/bashrc; emacs /etc/bashrc && source /etc/bashrc'
+alias dog='git commit -a && git push origin master'
+alias csb='cd ~/rcs/stowball && ./stowball-write-db-from-csv'
+alias f1='find . -cmin -1 -type f'
+alias f5='find . -cmin -5 -type f'
+alias f60='find . -cmin -60 -type f'
+
+alias d='emacs .';
+alias e='emacs'
+alias c='clear && /bin/ls --color'
+alias cl='rm --verbose *~; /bin/ls --color'
+alias ..='cd .. && clear && ls'
+alias 2='cd /home/troy/rcs/stowball/data/shilohSchema/2010_spring/csv'
+
+alias rcs='cd /home/troy/rcs && ls --color'
+
+t-arora-google () {
+    arora "http://www.google.com/search?hl=C&q=${1}" &
+}
