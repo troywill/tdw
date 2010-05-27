@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my $card = &parse_usb();
+print "==> $card\n";
+print "mplayer -ao alsa:noblock:device=hw=$card\n";
+
+sub parse_usb {
+    my $aplay = `aplay -l`;
+    $aplay =~ m/card (\d).*?C-Media USB Headphone/;
+    my $card = $1;
+    return $1;
+}
+    
