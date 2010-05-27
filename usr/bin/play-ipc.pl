@@ -2,7 +2,9 @@
 use strict;
 use warnings;
 
-my $command = 'mplayer -ss 1780 -noconsolecontrols /home/troy/audio/m3-02.mp3 2>/dev/null';
+my $audio_file = shift;
+
+my $command = 'mplayer -ss 1780 -noconsolecontrols $audio_file 2>/dev/null';
 
 open ( MP, "$command |");
 my $i = 0;
