@@ -7,6 +7,7 @@ my $MOUNT = "/bin/mount";
 my %disks = ( 
     '/media/floppy' => '/dev/disk/by-id/usb-SanDisk_SanDisk_Cruzer_1233520A8010FB37-0:0-part1',
     '/mnt/Thai-1' => '/dev/disk/by-label/Thai-1',
+    '/mnt/Thai-2' => '/dev/disk/by-label/Thai-2',
     '/mnt/memorex_512' => '/dev/disk/by-label/memorex_512'
 );
 
