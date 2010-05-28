@@ -11,4 +11,4 @@ git commit -m 'Enter some message'
 git remote add origin git@github.com:troywill/tdw_wireless_tools.git
 git push origin master
 
-
+2. How do I get a list of all GitHub repositories?
