@@ -1,11 +1,13 @@
-#!/bin/env perl
+#!/usr/bin/env perl
 use warnings;
 use strict;
 my $SUDO = "/usr/bin/sudo";
+my $MOUNT = "/bin/mount";
 
 my %disks = ( 
     '/media/floppy' => '/dev/disk/by-id/usb-SanDisk_SanDisk_Cruzer_1233520A8010FB37-0:0-part1',
-    '/mnt/Thai-1' => '/dev/disk/by-label/Thai-1'
+    '/mnt/Thai-1' => '/dev/disk/by-label/Thai-1',
+    '/mnt/memorex_512' => '/dev/disk/by-label/memorex_512'
 );
 
 &loop_disks(%disks);
@@ -13,8 +15,18 @@ my %disks = (
 sub loop_disks () {
     my %hash = @_;
     foreach my $key ( keys %hash ) {
-	print "$key => $hash{$key}\n";
-	
+	my ( $mount_point, $partition ) = ( $key, $hash{$key} );
+	if ( -e $partition ) {
+	    my $command = "$SUDO $MOUNT $partition $mount_point";
+	    print "=> $command\n";
+	    if ( !-e $mount_point ) {
+		print "$mount_point DOES NOT EXIST\n";
+		my $command = "$SUDO mkdir --verbose $mount_point";
+		print "=> $command\n";
+		system $command;
+	    }
+	    system $command;
+	}
     };
 }
 
