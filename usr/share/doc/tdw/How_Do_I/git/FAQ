@@ -1,0 +1,14 @@
+1. How do I create a new GitHub repository from the shell?
+Create a GitHub account with your web browser at http://github.com
+and create a new repository there.
+
+git config --global user.name "Troy Will"
+git config --global user.email "troydwill@gmail.com"
+
+git init
+git add *
+git commit -m 'Enter some message'
+git remote add origin git@github.com:troywill/tdw_wireless_tools.git
+git push origin master
+
+
