@@ -1,0 +1,5 @@
+1. How do I sync the database?
+pacman --sync --refresh
+
+
+
