@@ -1,0 +1,27 @@
+#!/usr/bin/env perl
+$| = 1;
+use warnings;
+use strict;
+
+my $t1 = time;
+print "hours\tdecimal minutes\n";
+while (1) {
+    &print_elapsed_time( $t1, time, $ARGV[0] );
+    sleep 1;
+}
+
+sub print_elapsed_time {
+    my ( $t1, $t2, $action ) = @_;
+    my $seconds = $t2 - $t1;
+    my $hours = $seconds / 3600;
+    # Round number to 2 digits after decimal point
+    printf("%.2f %.2f %s\r", $hours, &minutes_and_seconds, $action);
+#    print &minutes_and_seconds, "\n";
+}
+
+sub minutes_and_seconds {
+    my ( $t1, $t2 ) = @_;
+    my $seconds = $t2 - $t1;
+    my $minutes = $seconds / 60;
+    return $minutes;
+}
