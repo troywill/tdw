@@ -13,4 +13,22 @@ git push origin master
 
 2. How do I get a list of all GitHub repositories?
 
+#!/usr/bin/env perl
+use strict;
+use warnings;
+&list_my_repositories ('troywill');
+
+sub list_my_repositories {
+    my $user = shift;
+    print "list_my_repositories\n";
+    print "See http://develop.github.com/p/repo.html\n";
+    my $command = "curl http://github.com/api/v2/yaml/repos/show/$user";
+    print "=> $command\n";
+    my $output = `$command`;
+    open ( my $out, '>', '/tmp/my_github_repos.yaml' );
+    print $out $output;
+    close $out;
+}
+
 3. How do I download a particular GitHub repository?
+   git clone git@github.com:troywill/Autostow.git
