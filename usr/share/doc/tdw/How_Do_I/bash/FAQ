@@ -1,0 +1,8 @@
+1. How do I set up my .bash and .bashprofile?
+
+   From Bash info file: 6. Bash features, bash startup files
+
+   "So, typically, your `~/.bash_profile' contains the line
+     `if [ -f ~/.bashrc ]; then . ~/.bashrc; fi'
+   after (or before) any login-specific initializations."
+
