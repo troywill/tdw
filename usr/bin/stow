@@ -1,0 +1,17 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+# troydwill@gmail.com, June 2010
+my $SUDO = &get_sudo();
+my $command = "$SUDO stow2 @ARGV";
+print "=> $command\n";
+sleep 1;
+system $command;
+
+sub get_sudo {
+    if ( $ENV{"USER"} ne 'root') {
+	return '/usr/bin/sudo';
+    }	else {
+	return '';
+    }
+}
