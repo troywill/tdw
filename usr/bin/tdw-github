@@ -13,4 +13,6 @@ sub list_my_repositories {
     open ( my $out, '>', '/tmp/my_github_repos.yaml' );
     print $out $output;
     close $out;
+    chdir '/tmp/';
+    system ("wget --no-clobber http://github.com/api/v2/yaml/repos/show/$user");
 }
