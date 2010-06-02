@@ -4,7 +4,6 @@ use warnings;
 use strict;
 
 &read_and_print_activity_list('/etc/tdw-time-log/activity-list');
-print "Which activity? : Organize, read, job hunt, write";
 chomp( my $activity = <STDIN> );
 print "What duration? ";
 chomp( my $duration = <STDIN> );
