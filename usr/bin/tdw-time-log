@@ -14,7 +14,7 @@ while ((time-$t1)/60<$duration) {
     &print_elapsed_time( $t1, time, $activity );
     sleep 1;
 }
-system("mplayer /tmp/*.ogg");
+system("mplayer /usr/share/sounds/finish.ogg");
 
 sub print_elapsed_time {
     my ( $t1, $t2, $action ) = @_;
