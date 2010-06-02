@@ -3,6 +3,7 @@ $| = 1;
 use warnings;
 use strict;
 
+&read_and_print_activity_list('/etc/tdw-time-log/activity-list');
 print "Which activity? : Organize, read, job hunt, write";
 chomp( my $activity = <STDIN> );
 print "What duration? ";
@@ -30,3 +31,10 @@ sub minutes_and_seconds {
     my $minutes = $seconds / 60;
     return $minutes;
 }
+
+sub read_and_print_activity_list {
+    my $file = shift;
+    open( my $in, '<', $file ) or warn "Not able to open $file activity list: $!\n";
+    print while(<$in>);
+}
+
