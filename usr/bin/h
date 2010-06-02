@@ -1,0 +1,23 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my $SUDO = &get_sudo();
+
+&run_command( 'sync' );
+&run_command( "sleep 4 && $SUDO /sbin/halt" );
+
+sub run_command {
+    my $command = shift;
+    print "=> $command";
+    system $command;
+    print "\n";
+}
+
+sub get_sudo {
+    if ( $ENV{"USER"} ne 'root') {
+	return '/usr/bin/sudo';
+    }	else {
+	return '';
+    }
+}
