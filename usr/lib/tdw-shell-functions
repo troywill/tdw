@@ -1,6 +1,6 @@
 #!/bin/bash
 HOME="/home/troy"
-EDITOR="emacs"
+export EDITOR="emacs"
 
 # Networking aliases
 n () {
