@@ -3,3 +3,8 @@
 
 2. How do I edit Yaml files?
 
+git clone http://github.com/yoshiki/yaml-mode.git
+cp yaml-mode.el /usr/share/emacs/site-lisp/yaml-mode.el
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
