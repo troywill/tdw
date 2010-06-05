@@ -1,2 +1,5 @@
 1. How do I automatically follow a symbolic link to a version controlled file?
 (setq vc-follow-symlinks)
+
+2. How do I edit Yaml files?
+
