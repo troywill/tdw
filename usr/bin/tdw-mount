@@ -10,7 +10,8 @@ my %disks = (
     '/mnt/Shiloh' => '/dev/disk/by-label/Shiloh',
     '/mnt/Thai-2' => '/dev/disk/by-label/Thai-2',
     '/mnt/memorex_512' => '/dev/disk/by-label/memorex_512',
-    '/mnt/sd_adata' => '/dev/disk/by-label/sd_adata'
+    '/mnt/sd_adata' => '/dev/disk/by-label/sd_adata',
+    '/mnt/sd_sandisk_8g' => '/dev/disk/by-label/sd_sandisk_8g'
 );
 
 &loop_disks(%disks);
@@ -35,3 +36,4 @@ sub loop_disks () {
 
 # sudo mount 
 # sudo mount /dev/disk/by-label/Thai-1 /mnt/Thai-1
+
