@@ -1,3 +1,8 @@
 1. How do I sync the database?
 pacman --sync --refresh
-2. How do I install Git?
+2. How do I search for Git?
+pacman --sync --refresh
+pacman --syn --search git
+3. How do I install Git?
+pacman --sync git
+( Installs run-parts, ca-cerfificates, curl, perl-error, git )
