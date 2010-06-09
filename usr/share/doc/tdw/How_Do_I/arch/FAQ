@@ -1,0 +1,2 @@
+1. What packages should I install first?
+git, openssh(sqlite3,heimdal)
