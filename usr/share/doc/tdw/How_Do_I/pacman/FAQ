@@ -1,5 +1,3 @@
 1. How do I sync the database?
 pacman --sync --refresh
-
-
-
+2. How do I install Git?
