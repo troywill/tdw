@@ -1,1 +1,4 @@
 1. How do I install Catalyst?
+http://wiki.catalystframework.org/wiki/installingcatalyst
+cpanp i Catalyst::Runtime
+

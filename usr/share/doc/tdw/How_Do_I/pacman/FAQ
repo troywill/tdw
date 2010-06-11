@@ -6,3 +6,5 @@ pacman --syn --search git
 3. How do I install Git?
 pacman --sync git
 ( Installs run-parts, ca-cerfificates, curl, perl-error, git )
+4. Is there a meta-package for development?
+pacman --sync base-devel
