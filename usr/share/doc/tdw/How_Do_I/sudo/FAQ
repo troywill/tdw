@@ -1,0 +1,9 @@
+1. What do I put in /etc/sudoers file?
+
+# Defaults specification
+Defaults:troy timestamp_timeout=-1
+# User privilege specification
+root	ALL=(ALL) ALL
+troy	ALL=(ALL) ALL
+
+2. How do I eliminate the need for the initial password prompt?
