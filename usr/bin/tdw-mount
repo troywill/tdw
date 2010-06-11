@@ -4,6 +4,8 @@ use strict;
 my $SUDO = "/usr/bin/sudo";
 my $MOUNT = "/bin/mount";
 
+system "/sbin/fdisk -l /dev/sdb";
+
 my %disks = ( 
     '/media/floppy' => '/dev/disk/by-id/usb-SanDisk_SanDisk_Cruzer_1233520A8010FB37-0:0-part1',
     '/mnt/Thai-1' => '/dev/disk/by-label/Thai-1',
