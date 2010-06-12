@@ -61,3 +61,8 @@ alias rcs='cd /home/troy/rcs && ls --color'
 t-arora-google () {
     arora "http://www.google.com/search?hl=C&q=${1}" &
 }
+
+# pacman functions
+p () {
+    sudo pacman --sync $1
+}
