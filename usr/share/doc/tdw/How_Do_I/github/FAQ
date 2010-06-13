@@ -1,1 +1,13 @@
 1. How do I create a new project?
+( See http://develop.github.com/p/repo.html )
+
+repos/create
+
+#!/usr/bin/env perl
+use warnings;
+use strict;
+my $github_repository_name = shift;
+my $github_owner = 'troywill';
+my $command = "git clone git\@github.com:$github_owner/$github_repository_name.git";
+print "=> $command\n";
+system $command;
