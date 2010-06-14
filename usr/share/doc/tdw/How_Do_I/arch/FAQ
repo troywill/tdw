@@ -3,5 +3,4 @@ git, openssh(sqlite3,heimdal),emacs-nox,
 2. How do I manually start openssh daemon?
 /etc/rc.d/sshd start
 DAEMONS=(sshd) in /etc/rc.conf
-
-
+3. How do I install Arch Linux to a SD card?
