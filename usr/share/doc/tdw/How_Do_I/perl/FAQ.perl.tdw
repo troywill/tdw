@@ -1,3 +1,29 @@
-How do I print the date in date as "YYYY-MM-DD" (in approved ISO 8601 fashion)
+1. How do I print the date in date as "YYYY-MM-DD" (in approved ISO 8601 fashion)
 ($day, $month, $year) = (localtime)[3,4,5];
 printf("The current date is %04d %02d %02d\n", $year+1900, $month+1, $day);
+
+2. How do I create a "Here Doc?"
+http://en.wikipedia.org/wiki/Heredoc
+my $sender = "Buffy the Vampire Slayer";
+my $recipient = "Spike";
+ 
+print <<"END";
+ 
+Dear $recipient, 
+ 
+I wish you to leave Sunnydale and never return.
+ 
+Not Quite Love,
+$sender
+ 
+END
+
+print <<'END';
+Dear $recipient,
+ 
+I wish you to leave Sunnydale and never return.
+ 
+Not Quite Love,
+$sender
+END
+
