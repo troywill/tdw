@@ -4,7 +4,6 @@ use strict;
 
 my @files = @ARGV; # $files = qw{troy};
 
-
 my $card = &parse_usb();
 print "==> $card\n";
 my $command = "mplayer -ao alsa:noblock:device=hw=$card @files";
@@ -17,4 +16,3 @@ sub parse_usb {
     my $card = $1;
     return $1;
 }
-    
