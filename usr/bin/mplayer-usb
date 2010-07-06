@@ -2,11 +2,12 @@
 use warnings;
 use strict;
 
-my @files = @ARGV; # $files = qw{troy};
+# my @files = @ARGV; # $files = qw{troy};
+my $file = shift;
 
 my $card = &parse_usb();
 print "==> $card\n";
-my $command = "mplayer -ao alsa:noblock:device=hw=$card @files";
+my $command = "mplayer -ao alsa:noblock:device=hw=$card \'$file\'";
 print "$command\n";
 system $command;
 

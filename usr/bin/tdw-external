@@ -1,0 +1,9 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my $external_command = 'xrandr --output VGA1 --auto';
+system $external_command;
+
+my $internal_monitor = 'xrandr --output LVDS1 --off';
+system $internal_monitor;
