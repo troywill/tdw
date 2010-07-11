@@ -21,3 +21,4 @@
 (global-set-key "\M-+" 'word-count-mode)
 
 (put 'upcase-region 'disabled nil)
+(setq vc-handled-backends nil)
