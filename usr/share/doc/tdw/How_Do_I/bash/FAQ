@@ -6,3 +6,7 @@
      `if [ -f ~/.bashrc ]; then . ~/.bashrc; fi'
    after (or before) any login-specific initializations."
 
+2. How do I term off bell?
+setterm -blength 0 in /etc/inputrc
+or
+set bell-style none in /etc/inputrc

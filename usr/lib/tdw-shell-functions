@@ -43,8 +43,8 @@ ga () {
 }
 
 alias ebd='pwd >> /etc/bashrc; emacs /etc/bashrc && source /etc/bashrc'
-alias dog='git pull && git commit -a && git push origin master'
-alias doggy="git pull && git commit -a -m 'minor' && git push origin master"
+alias dog='git pull; git commit -a; push origin master'
+alias doggy="git pull; git commit -a -m 'minor'; git push origin master"
 alias csb='cd ~/rcs/stowball && ./stowball-write-db-from-csv'
 alias f1='find . -cmin -1 -type f'
 alias f5='find . -cmin -5 -type f'
