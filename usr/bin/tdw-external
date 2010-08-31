@@ -2,8 +2,17 @@
 use warnings;
 use strict;
 
-my $external_command = 'xrandr --output VGA1 --auto';
-system $external_command;
+if ( $ARGV[0] == 1 ) {
+    my $internal_monitor = 'xrandr --output VGA1 --auto';
+    system $internal_monitor;
+    my $external_command = 'xrandr --output LVDS1 --auto';
+    system $external_command;
+} else {
+    my $external_command = 'xrandr --output VGA1 --auto';
+    print "$external_command\n";
+    system $external_command;
+    my $internal_monitor = 'xrandr --output LVDS1 --off';
+    print "$internal_monitor\n";
+    system $internal_monitor;
+}
 
-my $internal_monitor = 'xrandr --output LVDS1 --off';
-system $internal_monitor;
