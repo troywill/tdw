@@ -28,3 +28,6 @@ $sender
 END
 
 3. How do I create a module template?
+
+4. How do replace words in many files?
+perl -pi -e 's/searchterm/replaceterm/' *.cpp
