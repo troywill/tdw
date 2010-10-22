@@ -1,0 +1,27 @@
+1. How do I pass user_id with a hidden form field in Rails?
+[Valid for Rails 3.01, October 22, 2010]
+[Reference: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-hidden_field]
+<div class="field"><%= f.label :user_id %><%= f.hidden_field :user_id, :value => session[:user_id] %></div>
+
+2. How do I make a year selection box?
+http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html
+http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-select_year
+
+The trick is adding the :prefix tag
+<div class="field">
+  <%= f.label :year %>
+  <%= select_year( :start_year => 2010, :end_year => 1992, :prompt => 'Choose year', :prefix => "ad" ) %>
+</div>
+
+However, this presents a problem when editing the record: the year value is not passed through
+
+
+This is what I ended up with:
+<%= select( "ad", "year", ["Choose Date"] + %w[2010.downto(1992)], {}) %>
+
+3. How do I add conditions in a find?
+<%= select("ad", "model_id", Model.find(:all).collect { |p| [p.name, p.id]}) %>
+Model.find(:all, :conditions => 'user_id=2' )
+<%= select("ad", "model_id", Model.find(:all, :conditions => "user_id = #{session[:user_id]}").collect { |p| [p.name, p.id]\
+}) %>
+
