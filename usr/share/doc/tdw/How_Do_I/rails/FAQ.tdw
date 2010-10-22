@@ -1,0 +1,6 @@
+1. How do I pass user_id with a hidden form field in Rails?
+[Valid for Rails 3.01, October 22, 2010]
+[Reference: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-hidden_field]
+<div class="field"><%= f.label :user_id %><%= f.hidden_field :user_id, :value => session[:user_id] %></div>
+
+
