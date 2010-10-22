@@ -2,6 +2,56 @@
 # HOME="/home/troy"
 export EDITOR="emacs"
 
+########## Begin Rails development funtions ########################
+# Rails change directory functions
+CURRENT_APP_NAME="vehicle_22"
+CURRENT_APP_DIR="${HOME}/devel/rails/${CURRENT_APP_NAME}/"
+CURRENT_RAILS_GIT_DIR="$CURRENT_APP_DIR/vendor/rails-ads-vehicles"
+
+r () {
+    echo "db => ${EDITOR} ${CURRENT_APP_DIR}/db/schema.rb"
+    echo "cr => cd current rails app"
+    echo "crv => cd current rails app, app/views"
+    echo "crg => current Rails Git dir"
+    echo "rgc => git clone git@github.com:troywill/rails-ads-vehicles"
+}
+db () {
+    ${EDITOR} ${CURRENT_APP_DIR}/db/schema.rb
+}
+
+rgc () {
+    git clone git@github.com:troywill/rails-ads-vehicles
+}
+cr () {
+    cd ${CURRENT_APP_DIR}
+}
+crv () {
+    cd ${CURRENT_APP_DIR}/app/views
+}
+crg () {
+    cd ${CURRENT_RAILS_GIT_DIR}
+}
+
+########## End Rails development funtions ########################
+## Begin section: Git functions ##
+g () {
+    echo "Git functions"
+    echo "ga => git add $1"
+    echo "gb => git branch --color -a"
+    echo "gpu => git push origin user"
+}
+gpu () {
+    git push origin user
+}
+gb () {
+    git branch --color -a
+}
+ga () {
+    echo "==> git add $1"
+    git add $1
+}
+## End section: Git functions ##
+
 # Networking aliases
 n () {
     tdw-wireless-daemon
@@ -33,13 +83,6 @@ eb () {
 
 tz () {
     echo "tar -xf $1" && tar -xf $1
-}
-
-# git functions
-
-ga () {
-    echo "==> git add $1"
-    git add $1
 }
 
 alias ebd='pwd >> /etc/bashrc; emacs /etc/bashrc && source /etc/bashrc'
