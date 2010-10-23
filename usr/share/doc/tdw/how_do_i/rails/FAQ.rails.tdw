@@ -42,3 +42,6 @@ In another template for Advertiser#buy, we could have:
   <% for ad in @advertisements %>
     <%= render :partial => "ad", :locals => { :ad => ad } %>
   <% end %>
+
+6. How do I ensure uniqueness on two columns? [2010-10-23]
+validates_uniqueness_of :name, :scope => :user_id
