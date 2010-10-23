@@ -25,3 +25,20 @@ Model.find(:all, :conditions => 'user_id=2' )
 <%= select("ad", "model_id", Model.find(:all, :conditions => "user_id = #{session[:user_id]}").collect { |p| [p.name, p.id]\
 }) %>
 
+4. How do I order a find in a controller?
+@shows = Show.find(:all, :order => "date")
+
+5. How do I pass an arguement to a partial view?
+[Reference: http://api.rubyonrails.org/classes/ActionView/Partials.html ]
+In a template for Advertiser#account:
+
+ <%= render :partial => "account" %>
+This would render “advertiser/_account.erb“ and pass the instance variable @account in as a local variable account to the template for display.
+
+In another template for Advertiser#buy, we could have:
+
+  <%= render :partial => "account", :locals => { :account => @buyer } %>
+
+  <% for ad in @advertisements %>
+    <%= render :partial => "ad", :locals => { :ad => ad } %>
+  <% end %>
