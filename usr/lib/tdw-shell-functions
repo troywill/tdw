@@ -5,6 +5,7 @@ export EDITOR="emacs"
 ########## Begin Rails development funtions ########################
 # Rails change directory functions
 CURRENT_APP_NAME="vehicle_22"
+CURRENT_APP_NAME="depot"
 CURRENT_APP_DIR="${HOME}/devel/rails/${CURRENT_APP_NAME}/"
 CURRENT_RAILS_GIT_DIR="$CURRENT_APP_DIR/vendor/rails-ads-vehicles"
 

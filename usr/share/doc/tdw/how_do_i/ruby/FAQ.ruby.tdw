@@ -1,0 +1,4 @@
+Q1. How do I create a Hash?
+A1. my_hash = { 'key1' => 'value1' }
+    my_has.keys
+    my_has.values
