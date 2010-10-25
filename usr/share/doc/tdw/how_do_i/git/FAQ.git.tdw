@@ -1,4 +1,4 @@
-1. How do I create a new GitHub repository from the shell?
+Q1. How do I create a new GitHub repository from the shell?
 Create a GitHub account with your web browser at http://github.com
 and create a new repository there.
 
@@ -11,7 +11,7 @@ git commit -m 'Enter some message'
 git remote add origin git@github.com:troywill/tdw_wireless_tools.git
 git push origin master
 
-2. How do I get a list of all GitHub repositories?
+Q2. How do I get a list of all GitHub repositories?
 
 #!/usr/bin/env perl
 use strict;
@@ -30,5 +30,8 @@ sub list_my_repositories {
     close $out;
 }
 
-3. How do I download a particular GitHub repository?
+Q3. How do I download a particular GitHub repository?
    git clone git@github.com:troywill/Autostow.git
+
+Q4. How do I create a new branch?
+   
