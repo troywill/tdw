@@ -6,6 +6,7 @@ export EDITOR="emacs"
 # Rails change directory functions
 CURRENT_APP_NAME="vehicle_22"
 CURRENT_APP_NAME="depot"
+CURRENT_APP_NAME="cards"
 CURRENT_APP_DIR="${HOME}/devel/rails/${CURRENT_APP_NAME}/"
 CURRENT_RAILS_GIT_DIR="$CURRENT_APP_DIR/vendor/rails-ads-vehicles"
 
@@ -15,13 +16,23 @@ r () {
     echo "crv => cd current rails app, app/views"
     echo "crg => current Rails Git dir"
     echo "rgc => git clone git@github.com:troywill/rails-ads-vehicles"
+    echo "rrp => git clone git@github.com:troywill/rails-rapid-prototype"
+    echo "glayouts => git clone git@github.com:troywill/css2-layouts"
+
 }
-db () {
-    ${EDITOR} ${CURRENT_APP_DIR}/db/schema.rb
+rrp () {
+    git clone git@github.com:troywill/rails-rapid-prototype
+}
+
+glayouts () {
+    git clone git@github.com:troywill/css2-layouts
 }
 
 rgc () {
     git clone git@github.com:troywill/rails-ads-vehicles
+}
+db () {
+    ${EDITOR} ${CURRENT_APP_DIR}/db/schema.rb
 }
 cr () {
     cd ${CURRENT_APP_DIR}
@@ -40,6 +51,7 @@ g () {
     echo "ga => git add $1"
     echo "gb => git branch --color -a"
     echo "gpu => git push origin user"
+    echo "rrp => git push origin user"
 }
 gpu () {
     git push origin user
