@@ -1,6 +1,9 @@
-1. What packages should I install first?
+Q1. What packages should I install first?
 git, openssh(sqlite3,heimdal),emacs-nox,
-2. How do I manually start openssh daemon?
+Q2. How do I manually start openssh daemon?
 /etc/rc.d/sshd start
 DAEMONS=(sshd) in /etc/rc.conf
-3. How do I install Arch Linux to a SD card?
+Q3. How do I install Arch Linux to a SD card?
+Q4. How do I manually start openssh daemon?
+/etc/rc.d/httpd start
+DAEMONS=(httpd) in /etc/rc.conf
