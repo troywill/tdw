@@ -14,7 +14,8 @@ my %disks = (
     '/mnt/memorex_512' => '/dev/disk/by-label/memorex_512',
     '/mnt/sd_adata' => '/dev/disk/by-label/sd_adata',
     '/mnt/sdb1' => '/dev/sdb1',
-    '/mnt/sd_sandisk_8g' => '/dev/disk/by-label/sd_sandisk_8g'
+    '/mnt/sd_sandisk_8g' => '/dev/disk/by-label/sd_sandisk_8g',
+    '/mnt/attache' => '/dev/disk/by-label/attache'
 );
 
 &loop_disks(%disks);

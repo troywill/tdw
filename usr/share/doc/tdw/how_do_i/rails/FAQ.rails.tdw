@@ -50,3 +50,10 @@ Q7. How do specify currency in a scaffold and model?
 A7[2010-10-24].
 generate scaffold product price:decimal
 t.decimal :price, :precision => 8, :scale => 2
+
+Q8. How do I virual hosts with Apache and Phusion Passenger behind a router?
+
+Q9. How do I change the size of a text field / text area field?
+A9. site:http://api.rubyonrails.org text_area
+    http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-text_area [2010-10-28]
+    :cols => 20, :rows => 40
