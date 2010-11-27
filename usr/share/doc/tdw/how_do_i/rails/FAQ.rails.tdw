@@ -57,3 +57,8 @@ Q9. How do I change the size of a text field / text area field?
 A9. site:http://api.rubyonrails.org text_area
     http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-text_area [2010-10-28]
     :cols => 20, :rows => 40
+
+Q10. Add a column with a migration?
+ rails generate migration add_quantity_to_line_item quantity:integer
+ rails generate migration add_keep_to_listings keep:boolean
+
