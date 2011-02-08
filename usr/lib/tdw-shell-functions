@@ -106,7 +106,7 @@ alias d='emacs .';
 alias e='emacs'
 alias c='clear && /bin/ls --color'
 alias cl='rm --verbose *~; /bin/ls --color'
-alias ..='cd .. && clear && ls'
+alias ..='cd .. && clear && ls --color'
 alias 2='cd /home/troy/rcs/stowball/data/shilohSchema/2010_spring/csv'
 
 alias rcs='cd /home/troy/rcs && ls --color'
