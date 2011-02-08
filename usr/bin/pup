@@ -1,0 +1,29 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+# Use sudo if we are not root
+my $SUDO = '';
+$SUDO = 'sudo' if ( $ENV{'USER'} ne 'root' );
+
+system("$SUDO mount -v /var/cache/pacman/pkg");
+system("$SUDO pacman --sync --refresh");
+system("$SUDO pacman --sync $ARGV[0]]");
+system("$SUDO umount /var/cache/pacman/pkg");
+system("sync");
+
+
+
+__END__
+
+# 
+# /etc/fstab: static file system information
+#
+# <file system>        <dir>         <type>    <options>          <dump> <pass>
+devpts                 /dev/pts      devpts    defaults            0      0
+shm                    /dev/shm      tmpfs     nodev,nosuid        0      0
+UUID=1567147b-96af-4f4e-825f-511772fededb /boot ext2 defaults 0 1
+UUID=69fe3db0-0850-48b6-8f3e-ed0d4f530518 / ext4 defaults 0 1
+UUID=89438a3f-55a6-42ff-badf-bbd1f7f8d868 /home ext4 defaults 0 1
+UUID=b2eab628-0e72-4ca6-b592-dbbc095c2d82 swap swap defaults 0 0
+UUID=c8939e81-5a48-45df-9920-a55e3ccd5989 /var/cache/pacman/pkg ext4 defaults 0 1
