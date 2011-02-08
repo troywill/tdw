@@ -8,7 +8,7 @@ $SUDO = 'sudo' if ( $ENV{'USER'} ne 'root' );
 
 system("$SUDO mount -v -t ext4 UUID=c8939e81-5a48-45df-9920-a55e3ccd5989 /var/cache/pacman/pkg");
 system("$SUDO pacman --sync --refresh");
-system("$SUDO pacman --sync $ARGV[0]]");
+system("$SUDO pacman --sync $ARGV[0]");
 system("$SUDO pacman --sync --sysupgrade");
 system("$SUDO umount -v /var/cache/pacman/pkg");
 system("sync");
