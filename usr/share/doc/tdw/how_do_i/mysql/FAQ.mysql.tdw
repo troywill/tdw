@@ -1,0 +1,2 @@
+Q1. How do I change a user password
+A1. UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root';
