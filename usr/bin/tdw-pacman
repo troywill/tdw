@@ -5,7 +5,7 @@ use strict;
 # Use sudo if we are not root
 my $SUDO = '';
 $SUDO = 'sudo' if ( $ENV{'USER'} ne 'root' );
-$VERBOSE='--verbose';
+my $VERBOSE='--verbose';
 
 system("$SUDO fdisk -l /dev/sdb");
 system("$SUDO fdisk -l /dev/sdc");
