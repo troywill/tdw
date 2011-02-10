@@ -5,6 +5,7 @@ use strict;
 # Use sudo if we are not root
 my $SUDO = '';
 $SUDO = 'sudo' if ( $ENV{'USER'} ne 'root' );
+$VERBOSE='--verbose';
 
 system("$SUDO fdisk -l /dev/sdb");
 system("$SUDO fdisk -l /dev/sdc");
@@ -13,6 +14,7 @@ system("$SUDO mount -v -t ext4 UUID=c8939e81-5a48-45df-9920-a55e3ccd5989 /var/ca
 system("$SUDO pacman --sync --refresh");
 system("$SUDO pacman --sync $ARGV[0]");
 system("$SUDO pacman --sync --sysupgrade");
+system("$SUDO pacman --sync $VERBOSE --clean");
 system("$SUDO umount -v /var/cache/pacman/pkg");
 system("sync");
 print "Done!\n";
