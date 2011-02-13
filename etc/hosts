@@ -3,6 +3,7 @@
 #
 
 #<ip-address>	<hostname.domain.org>	<hostname>
+127.0.0.1	localhost.localdomain	myhost
 127.0.0.1	localhost.localdomain	localhost
 ::1		localhost.localdomain	localhost
 76.175.216.208				helena

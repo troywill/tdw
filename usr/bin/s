@@ -4,8 +4,8 @@ use strict;
 my $SUDO = '/usr/bin/sudo';
 my $REBOOT = '/sbin/shutdown -r now';
 
-&do_system_command( 'sync' );
-&do_system_command( "sleep 4 && $SUDO $REBOOT" );
+&do_system_command( 'sync &' );
+&do_system_command( "sleep 2 && $SUDO $REBOOT" );
 
 sub do_system_command {
     my $command = shift;
