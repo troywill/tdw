@@ -15,7 +15,6 @@ system("$SUDO pacman --sync --refresh");
 system("$SUDO pacman --sync $ARGV[0]");
 system("$SUDO pacman --sync --sysupgrade");
 system("$SUDO pacman --sync $VERBOSE --clean");
-system("$SUDO umount -v /var/cache/pacman/pkg");
 system("sync");
 print "Done!\n";
 

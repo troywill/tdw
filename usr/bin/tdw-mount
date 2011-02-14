@@ -7,15 +7,9 @@ my $MOUNT = "/bin/mount";
 system "$SUDO /sbin/fdisk -l /dev/sdb";
 
 my %disks = ( 
-    '/mnt/cruzer' => '/dev/disk/by-id/usb-SanDisk_SanDisk_Cruzer_1233520A8010FB37-0:0-part1',
     '/mnt/Thai-1' => '/dev/disk/by-label/Thai-1',
-    '/mnt/Shiloh' => '/dev/disk/by-label/Shiloh',
     '/mnt/Thai-2' => '/dev/disk/by-label/Thai-2',
-    '/mnt/memorex_512' => '/dev/disk/by-label/memorex_512',
-    '/mnt/sd_adata' => '/dev/disk/by-label/sd_adata',
-    '/mnt/sdb1' => '/dev/sdb1',
-    '/mnt/sd_sandisk_8g' => '/dev/disk/by-label/sd_sandisk_8g',
-    '/mnt/attache' => '/dev/disk/by-label/attache'
+    '/home/troy/torrent' => '/dev/disk/by-label/storage'
 );
 
 &loop_disks(%disks);
