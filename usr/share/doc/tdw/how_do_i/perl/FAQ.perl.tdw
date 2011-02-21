@@ -31,3 +31,5 @@ END
 
 4. How do replace words in many files?
 perl -pi -e 's/searchterm/replaceterm/' *.cpp
+
+http://wiki.hypexr.org/wikka.php?wakka=PerlFindReplace
