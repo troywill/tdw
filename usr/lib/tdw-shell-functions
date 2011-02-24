@@ -2,7 +2,7 @@
 # HOME="/home/troy"
 export EDITOR="emacs"
 
-########## Begin Rails development funtions ########################
+#### Begin Rails development funtions ####
 # Rails change directory functions
 CURRENT_APP_NAME="vehicle_22"
 CURRENT_APP_NAME="depot"
@@ -40,8 +40,8 @@ crv () {
     cd ${CURRENT_APP_DIR}/app/views
 }
 
-########## End Rails development funtions ########################
-## Begin section: Git functions ##
+#### End Rails development funtions ####
+#### Begin section: Git functions ##
 g () {
     echo "Git functions"
     echo "gca => git commit --all"
@@ -62,15 +62,14 @@ gb () {
 gpom () {
     echo "==> git push origin master"
 }
-## End section: Git functions ##
+#### End section: Git functions ##
 
-# Networking aliases
+#### Networking aliases
 n () {
     tdw-wireless-daemon
 }
-# alias n='tdw-wireless-daemon'
 
-# Change directory functions
+#### Change directory functions
 
 t-csv () {
     cd ${HOME}/rcs/stowball/data/shilohSchema/2010_spring/csv
