@@ -44,10 +44,14 @@ crv () {
 ## Begin section: Git functions ##
 g () {
     echo "Git functions"
-    echo "ga => git add $1"
-    echo "gb => git branch --color -a"
+    echo "gca => git commit --all"
     echo "gpu => git push origin user"
     echo "rrp => git push origin user"
+    echo "gpom => git push origin master"
+    echo "gb => git branch --color -a"
+}
+gca () {
+    git commit --all
 }
 gpu () {
     git push origin user
@@ -55,9 +59,8 @@ gpu () {
 gb () {
     git branch --color -a
 }
-ga () {
-    echo "==> git add $1"
-    git add $1
+gpom () {
+    echo "==> git push origin master"
 }
 ## End section: Git functions ##
 
