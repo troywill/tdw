@@ -1,2 +1,3 @@
 #!/bin/bash
-ls -l /dev/disk/by-label/*
+ls -l /dev/disk/by-label/* | cut -c 40-
+

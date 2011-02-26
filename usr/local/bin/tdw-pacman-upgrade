@@ -10,13 +10,9 @@ my $VERBOSE='--verbose';
 system("$SUDO fdisk -l /dev/sdb");
 system("$SUDO fdisk -l /dev/sdc");
 system("$SUDO fdisk -l /dev/sdd");
-system("$SUDO mkdir /mnt/thumb_root");
 system("$SUDO mount -v /dev/disk/by-label/thumb_root /mnt/thumb_root");
-system("$SUDO rmdir /var/cache/pacman/pkg");
-system("$SUDO ln -s /mnt/thumb_root/var/cache/pacman/pkg /var/cache/pacman/pkg");
 system("$SUDO pacman --sync --refresh");
 system("$SUDO pacman --sync --sysupgrade");
-system("$SUDO mkdir /var/cache/pacman/pkg");
 system("sync");
 print "Done!\n";
 
