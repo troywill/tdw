@@ -13,9 +13,7 @@ system("$SUDO fdisk -l /dev/sdd");
 system("$SUDO mount -v /dev/disk/by-label/thumb_root /mnt/thumb_root");
 system("$SUDO pacman --sync --refresh");
 system("$SUDO pacman --sync --sysupgrade");
-system("sync");
 print "Done!\n";
-
 __END__
 
 # 
