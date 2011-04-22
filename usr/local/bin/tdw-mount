@@ -8,8 +8,7 @@ system "$SUDO /sbin/fdisk -l /dev/sdb";
 
 my %disks = ( 
     '/mnt/Thai-1' => '/dev/disk/by-label/Thai-1',
-    '/mnt/Thai-2' => '/dev/disk/by-label/Thai-2',
-    '/home/troy/torrent' => '/dev/disk/by-label/storage'
+    '/mnt/Thai-2' => '/dev/disk/by-label/Thai-2'
 );
 
 &loop_disks(%disks);
