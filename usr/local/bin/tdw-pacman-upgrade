@@ -12,6 +12,8 @@ system("$SUDO fdisk -l /dev/sdc 2>/dev/null");
 system("$SUDO fdisk -l /dev/sdd 2>/dev/null");
 system("$SUDO mount -v /dev/disk/by-label/thumb_root /mnt/thumb_root");
 system("$SUDO pacman --sync --refresh");
+system("$SUDO pacman --sync kdeedu");
+system("$SUDO pacman --sync kdepim");
 system("$SUDO pacman --sync --sysupgrade");
 system("$SUDO pacman --sync --clean");
 system("$SUDO umount -v /dev/disk/by-label/thumb_root /mnt/thumb_root");
