@@ -1,11 +1,15 @@
 #!/usr/bin/env perl
 use warnings;
 use strict;
+my $sleep = 2;
 my $SUDO = '/usr/bin/sudo';
 my $REBOOT = '/sbin/shutdown -r now';
 
-&do_system_command( 'sync &' );
-&do_system_command( "sleep 2 && $SUDO $REBOOT" );
+&do_system_command( "sync" );
+&do_system_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0");
+&do_system_command( "sleep $sleep && $SUDO $REBOOT" );
+
+
 
 sub do_system_command {
     my $command = shift;

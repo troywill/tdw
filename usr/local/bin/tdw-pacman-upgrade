@@ -7,12 +7,14 @@ my $SUDO = '';
 $SUDO = 'sudo' if ( $ENV{'USER'} ne 'root' );
 my $VERBOSE='--verbose';
 
-system("$SUDO fdisk -l /dev/sdb");
-system("$SUDO fdisk -l /dev/sdc");
-system("$SUDO fdisk -l /dev/sdd");
+system("$SUDO fdisk -l /dev/sdb 2>/dev/null");
+system("$SUDO fdisk -l /dev/sdc 2>/dev/null");
+system("$SUDO fdisk -l /dev/sdd 2>/dev/null");
 system("$SUDO mount -v /dev/disk/by-label/thumb_root /mnt/thumb_root");
 system("$SUDO pacman --sync --refresh");
 system("$SUDO pacman --sync --sysupgrade");
+system("$SUDO pacman --sync --clean");
+system("$SUDO umount -v /dev/disk/by-label/thumb_root /mnt/thumb_root");
 print "Done!\n";
 __END__
 
