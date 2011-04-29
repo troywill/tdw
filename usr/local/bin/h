@@ -5,6 +5,7 @@ use strict;
 my $SUDO = &get_sudo();
 
 &run_command( 'sync' );
+&run_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0");
 &run_command( "sleep 4 && $SUDO /sbin/halt" );
 
 sub run_command {
