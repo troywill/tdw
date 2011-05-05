@@ -71,6 +71,10 @@ n () {
 
 #### Change directory functions
 
+t-s () {
+    cd ${HOME}/success/2011/05/05/
+}
+
 t-csv () {
     cd ${HOME}/rcs/stowball/data/shilohSchema/2010_spring/csv
     git pull
@@ -121,3 +125,5 @@ t-arora-google () {
 p () {
     sudo pacman --sync $1
 }
+
+
