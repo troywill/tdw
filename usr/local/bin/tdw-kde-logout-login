@@ -1,0 +1,25 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+my $sleep = 2;
+my $SUDO = '/usr/bin/sudo';
+my $REBOOT = '/sbin/shutdown -r now';
+
+my $pid = `ps aux | grep chromium | head --lines=1 | cut -c 10-14`;
+chomp( $pid );
+system("kill $pid");
+print "$pid\n";
+
+exit;
+__END__
+
+&do_system_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0 &");
+&do_system_command( "sleep $sleep && startx" );
+
+sub do_system_command {
+    my $command = shift;
+    print "=> $command\n";
+    system $command;
+}
+
+
