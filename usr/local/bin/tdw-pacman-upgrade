@@ -12,7 +12,7 @@ my $VERBOSE='--verbose';
 &mount_thumb_drive;
 
 system("$SUDO pacman --sync --refresh");
-system("$SUDO pacman --sync --sysupgrade");
+system("$SUDO pacman --sync --sysupgrade --downloadonly");
 
 sub mount_thumb_drive {
     print "=>$device<=\n";
