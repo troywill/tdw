@@ -72,7 +72,7 @@ n () {
 #### Change directory functions
 
 t-s () {
-    cd ${HOME}/success/2011/05/05/
+    cd ${HOME}/success/2011/05/06/
 }
 
 t-csv () {
