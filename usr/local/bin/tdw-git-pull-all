@@ -1,0 +1,11 @@
+#!/bin/bash
+set -o errexit
+set -o nounset
+STOW_DIR="/stow"
+
+for DIR in "tdw" "tomtom-rails"; do
+    TARGET_DIR="${STOW_DIR}/${DIR}"
+    echo "== $TARGET_DIR=="
+    cd ${TARGET_DIR}
+    git pull
+done
