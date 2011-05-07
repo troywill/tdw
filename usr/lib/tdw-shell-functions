@@ -72,7 +72,8 @@ n () {
 #### Change directory functions
 
 t-s () {
-    cd ${HOME}/success/2011/05/06/
+    DAY=`date +%d`;
+    cd ${HOME}/success/2011/05/${DAY}
 }
 
 t-csv () {
