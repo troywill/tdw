@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 my $device = '/dev/disk/by-label/thumb_root';
-my $mount_point = '/mnt/thumb.root';
+my $mount_point = '/mnt/root.thumb';
 
 # Use sudo if we are not root
 my $SUDO = '';
