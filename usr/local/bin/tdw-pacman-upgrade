@@ -3,6 +3,7 @@ use warnings;
 use strict;
 
 my $device = '/dev/disk/by-label/thumb_root';
+my $mount_point = '/mnt/thumb.root';
 
 # Use sudo if we are not root
 my $SUDO = '';
@@ -19,7 +20,7 @@ sub mount_thumb_drive {
     unless ( -l $device ) {
 	die "Do not see $device";
     }
-    system("$SUDO mount -v /dev/disk/by-label/thumb_root /mnt/thumb_root");
+    system("$SUDO mount -v /dev/disk/by-label/thumb_root $mount_point");
 }
 
 
