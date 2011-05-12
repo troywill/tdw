@@ -1,0 +1,6 @@
+#!/bin/bash
+set -o errexit
+set -o nounset
+
+ps aux | grep udev
+sudo killall udev

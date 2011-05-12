@@ -16,7 +16,7 @@ r () {
     echo "crv => cd current rails app, app/views"
     echo "rgc => git clone git@github.com:troywill/rails-ads-vehicles"
     echo "rrp => git clone git@github.com:troywill/rails-rapid-prototype"
-    echo "glayouts => git clone git@github.com:troywill/css2-layouts"
+    echo "glayouts => git clone git@github.com:troywill/tdw-css"
 
 }
 rrp () {
@@ -24,7 +24,7 @@ rrp () {
 }
 
 glayouts () {
-    git clone git@github.com:troywill/css2-layouts
+    git clone git@github.com:troywill/tdw-css
 }
 
 rgc () {
@@ -73,7 +73,9 @@ n () {
 
 t-s () {
     DAY=`date +%d`;
-    cd ${HOME}/success/2011/05/${DAY}
+    DIR="${HOME}/success/2011/05/${DAY}"
+    mkdir --parent ${DIR}
+    cd ${DIR}
 }
 
 t-csv () {
