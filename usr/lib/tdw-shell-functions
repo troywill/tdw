@@ -64,11 +64,6 @@ gpom () {
 }
 #### End section: Git functions ##
 
-#### Networking aliases
-n () {
-    tdw-wireless-daemon
-}
-
 #### Change directory functions
 
 t-s () {
