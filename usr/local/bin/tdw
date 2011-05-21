@@ -19,8 +19,8 @@ if ( AUTO_REFRESH ) {
 }
 
 if ( AUTO_PULL ) {
-  &auto_pull;
   print "=> Auto pulling ...\n";
+  &auto_pull;
 }
 
 sub auto_pull {
