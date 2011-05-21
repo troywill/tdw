@@ -9,6 +9,13 @@ use constant AUTO_REFRESH => 1;
 use constant UDEV_SNAFU => 1;
 use constant AUTO_PULL => 1;
 
+if ( AUTO_REFRESH ) {
+    if ( -e THUMB ) {
+	print THUMB;
+	&auto_refresh(THUMB);
+    }
+}
+
 if ( AUTO_PULL ) {
     &auto_pull;
 }
@@ -18,6 +25,7 @@ sub auto_pull {
     print `pwd`;
     my @dirs = <*>;
     foreach (@dirs) {
+	sleep 1;
 	chdir $_;
 	print ">>> ", `pwd`;
 	if ( -e '.git/config' ) {
@@ -32,13 +40,6 @@ sub auto_pull {
 use constant THUMB => '/dev/disk/by-label/thumb_root';
 use constant MOUNT => 'sudo mount -v -t ext4 /dev/disk/by-label/thumb_root /mnt/root.thumb/';
 use constant UMOUNT => 'sudo umount -v /mnt/root.thumb/';
-
-if ( AUTO_REFRESH ) {
-    if ( -e THUMB ) {
-	print THUMB;
-	&auto_refresh(THUMB);
-    }
-}
 
 sub auto_refresh {
     system( MOUNT );
