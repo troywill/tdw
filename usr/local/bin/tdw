@@ -9,26 +9,6 @@ use constant AUTO_REFRESH => 1;
 use constant UDEV_SNAFU => 1;
 use constant AUTO_PULL => 1;
 
-if ( AUTO_PULL ) {
-    &auto_pull;
-}
-
-sub auto_pull {
-    chdir '/stow';
-    print `pwd`;
-    my @dirs = <*>;
-    foreach (@dirs) {
-	chdir $_;
-	print ">>> ", `pwd`;
-	if ( -e '.git/config' ) {
-	    system("git pull origin master");
-	}
-	chdir '/stow';
-    };
-    print "\n<<\n";
-    
-}
-
 use constant THUMB => '/dev/disk/by-label/thumb_root';
 use constant MOUNT => 'sudo mount -v -t ext4 /dev/disk/by-label/thumb_root /mnt/root.thumb/';
 use constant UMOUNT => 'sudo umount -v /mnt/root.thumb/';
@@ -38,6 +18,27 @@ if ( AUTO_REFRESH ) {
 	print THUMB;
 	&auto_refresh(THUMB);
     }
+}
+
+if ( AUTO_PULL ) {
+    &auto_pull;
+}
+
+sub auto_pull {
+    chdir '/stow';
+    print `pwd`;
+    my @dirs = <*>;
+    foreach (@dirs) {
+	sleep 1;
+	chdir $_;
+	print ">>> ", `pwd`;
+	if ( -e '.git/config' ) {
+	    system("git pull origin master");
+	}
+	chdir '/stow';
+    };
+    print "\n<<\n";
+    
 }
 
 sub auto_refresh {
