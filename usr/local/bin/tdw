@@ -20,7 +20,7 @@ if ( AUTO_REFRESH ) {
 
 if ( AUTO_PULL ) {
   &auto_pull;
-  print "Auto pulling ...";
+  print "Auto pulling ...\n";
 }
 
 sub auto_pull {
@@ -33,14 +33,14 @@ sub auto_pull {
       if ( $result =~ /^Already up-to-date/ ) {
 	print "."
       } else {
-	print "==>$_\n";
+	print "\n==>$_\n";
 	print $result;
       }
     }
     chdir STOW_DIR;
   }
   ;
-  print ":: Checking for diffs...\n";
+  print "\n=> Checking for diffs...\n";
   foreach (@dirs) {
     sleep 1; chdir $_;
     if ( -e '.git/config' ) {
