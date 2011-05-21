@@ -42,6 +42,8 @@ sub auto_pull {
 	}
 	chdir '/stow';
     };
+    print UMOUNT, "\n";
+    system UMOUNT;
 }
 
 sub auto_refresh {
