@@ -9,6 +9,10 @@ use constant AUTO_REFRESH => 1;
 use constant UDEV_SNAFU => 1;
 use constant AUTO_PULL => 1;
 
+use constant THUMB => '/dev/disk/by-label/thumb_root';
+use constant MOUNT => 'sudo mount -v -t ext4 /dev/disk/by-label/thumb_root /mnt/root.thumb/';
+use constant UMOUNT => 'sudo umount -v /mnt/root.thumb/';
+
 if ( AUTO_REFRESH ) {
     if ( -e THUMB ) {
 	print THUMB;
@@ -36,10 +40,6 @@ sub auto_pull {
     print "\n<<\n";
     
 }
-
-use constant THUMB => '/dev/disk/by-label/thumb_root';
-use constant MOUNT => 'sudo mount -v -t ext4 /dev/disk/by-label/thumb_root /mnt/root.thumb/';
-use constant UMOUNT => 'sudo umount -v /mnt/root.thumb/';
 
 sub auto_refresh {
     system( MOUNT );
