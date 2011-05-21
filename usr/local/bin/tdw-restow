@@ -1,0 +1,18 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+use constant STOW_DIR => '/stow';
+chdir STOW_DIR;
+my @dirs = <*>;
+chdir $ENV{HOME};
+foreach (@dirs) {
+    my $result = `sudo stow2 -R $_ 2>&1`;
+    if ( $result =~ /conflicts detected/ ) {
+	print "--------- CONFLICT in $_ -------------------------------\n";
+	system("sudo stow2 -c $_");
+	print "-------------------------------------------------------\n";
+    } else {
+    }
+}
+print `date`;
