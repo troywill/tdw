@@ -11,7 +11,7 @@ foreach (@dirs) {
     if ( $result =~ /conflicts detected/ ) {
 	print "--------- CONFLICT in $_ -------------------------------\n";
 	system("sudo stow2 -c $_");
-	print "-------------------------------------------------------\n";
+	print "--------- CONFLICT in $_ -------------------------------\n";
     } else {
     }
 }
