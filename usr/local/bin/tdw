@@ -20,7 +20,7 @@ if ( AUTO_REFRESH ) {
 
 if ( AUTO_PULL ) {
   &auto_pull;
-  print "Auto pulling ...\n";
+  print "=> Auto pulling ...\n";
 }
 
 sub auto_pull {
