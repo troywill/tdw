@@ -10,3 +10,6 @@
 setterm -blength 0 in /etc/inputrc
 or
 set bell-style none in /etc/inputrc
+
+3. How do I redirect STDERR to STDIN?
+Answer 2>&1
