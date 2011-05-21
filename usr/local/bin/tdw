@@ -12,54 +12,57 @@ use constant MOUNT => 'sudo mount -v -t ext4 /dev/disk/by-label/thumb_root /mnt/
 use constant UMOUNT => 'sudo umount -v /mnt/root.thumb/';
 
 if ( AUTO_REFRESH ) {
-    if ( -e THUMB ) {
-	print THUMB;
-	&auto_refresh(THUMB);
-    }
+  if ( -e THUMB ) {
+    print THUMB;
+    &auto_refresh(THUMB);
+  }
 }
 
 if ( AUTO_PULL ) {
-    &auto_pull;
+  &auto_pull;
+  print "Auto pulling ...";
 }
 
 sub auto_pull {
-    chdir STOW_DIR;
-    my @dirs = <*>;
-    foreach (@dirs) {
-      sleep 1; chdir $_;
-      if ( -e '.git/config' ) {
-	print "==> In dir $_: git pull origin master...";
-	my $result = `git pull origin master 2>/dev/null`;
-	if ( $result =~ /^Already up-to-date/ ) {
-	  print " OK.\n"
-	} else {
-	  print $result;
-	}
+  chdir STOW_DIR;
+  my @dirs = <*>;
+  foreach (@dirs) {
+    sleep 1; chdir $_;
+    if ( -e '.git/config' ) {
+      my $result = `git pull origin master 2>/dev/null`;
+      if ( $result =~ /^Already up-to-date/ ) {
+	print "."
+      } else {
+	print "==>$_\n";
+	print $result;
       }
-      chdir STOW_DIR;
-    };
-    print ":: Checking for diffs...\n";
-    foreach (@dirs) {
-	sleep 1; chdir $_;
-	if ( -e '.git/config' ) {
-	    my $diff = `git diff --name-only`;
-	    if ( length($diff) > 0 ) {
-		print "----------------------\nDIFF: ", length($diff), ", $_\n";
-		print $diff;
-	    }
-	}
-	chdir STOW_DIR;
-    };
+    }
+    chdir STOW_DIR;
+  }
+  ;
+  print ":: Checking for diffs...\n";
+  foreach (@dirs) {
+    sleep 1; chdir $_;
+    if ( -e '.git/config' ) {
+      my $diff = `git diff --name-only`;
+      if ( length($diff) > 0 ) {
+	print "----------------------\nDIFF: ", length($diff), ", $_\n";
+	print $diff;
+      }
+    }
+    chdir STOW_DIR;
+  }
+  ;
 }
 
 sub auto_refresh {
-    system( MOUNT );
-    if ( UDEV_SNAFU ) {
-	system("tdw-snafu-udev");
-    }
-    system("sudo pacman --sync --refresh");
-    system("sudo pacman --sync --sysupgrade --downloadonly");
-    system("sudo pacman --sync --sysupgrade");
-    print UMOUNT, "\n";
-    system UMOUNT;
+  system( MOUNT );
+  if ( UDEV_SNAFU ) {
+    system("tdw-snafu-udev");
+  }
+  system("sudo pacman --sync --refresh");
+  system("sudo pacman --sync --sysupgrade --downloadonly");
+  system("sudo pacman --sync --sysupgrade");
+  print UMOUNT, "\n";
+  system UMOUNT;
 }
