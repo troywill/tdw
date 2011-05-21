@@ -1,0 +1,52 @@
+#!/usr/bin/env perl
+print "\n------------------------------------------------------------\n";
+print `date`;
+
+use warnings;
+use strict;
+
+use constant AUTO_REFRESH => 1;
+use constant UDEV_SNAFU => 1;
+use constant AUTO_PULL => 1;
+
+if ( AUTO_PULL ) {
+    &auto_pull;
+}
+
+sub auto_pull {
+    chdir '/stow';
+    print `pwd`;
+    my @dirs = <*>;
+    foreach (@dirs) {
+	chdir $_;
+	print ">>> ", `pwd`;
+	if ( -e '.git/config' ) {
+	    system("git pull origin master");
+	}
+	chdir '/stow';
+    };
+    print "\n<<\n";
+    
+}
+
+use constant THUMB => '/dev/disk/by-label/thumb_root';
+use constant MOUNT => 'sudo mount -v -t ext4 /dev/disk/by-label/thumb_root /mnt/root.thumb/';
+use constant UMOUNT => 'sudo umount -v /mnt/root.thumb/';
+
+if ( AUTO_REFRESH ) {
+    if ( -e THUMB ) {
+	print THUMB;
+	&auto_refresh(THUMB);
+    }
+}
+
+sub auto_refresh {
+    system( MOUNT );
+    if ( UDEV_SNAFU ) {
+	system("tdw-snafu-udev");
+    }
+    system("sudo pacman --sync --refresh");
+    system("sudo pacman --sync --sysupgrade --downloadonly");
+    system("sudo pacman --sync --sysupgrade");
+}
+
