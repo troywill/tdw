@@ -1,3 +1,7 @@
+(setq make-backup-files t)
+(setq version-control t)
+(setq backup-directory-alist (quote((".*" . "~/.emacs_backups/"))))
+
 (setq vc-follow-symlinks)
 ;; (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
