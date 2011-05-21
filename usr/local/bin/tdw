@@ -1,7 +1,4 @@
 #!/usr/bin/env perl
-print "\n------------------------------------------------------------\n";
-print `date`;
-
 use warnings;
 use strict;
 
@@ -23,22 +20,28 @@ if ( AUTO_REFRESH ) {
 if ( AUTO_PULL ) {
     &auto_pull;
 }
-
 sub auto_pull {
     chdir '/stow';
-    print `pwd`;
     my @dirs = <*>;
     foreach (@dirs) {
-	sleep 1;
-	chdir $_;
-	print ">>> ", `pwd`;
+	sleep 1; chdir $_;
 	if ( -e '.git/config' ) {
 	    system("git pull origin master");
 	}
 	chdir '/stow';
     };
-    print "\n<<\n";
-    
+    print ":: Checking for diffs...\n";
+    foreach (@dirs) {
+	sleep 1; chdir $_;
+	if ( -e '.git/config' ) {
+	    my $diff = `git diff --name-only`;
+	    if ( length($diff) > 0 ) {
+		print "----------------------\nDIFF: ", length($diff), "$_\n";
+		print $diff;
+	    }
+	}
+	chdir '/stow';
+    };
 }
 
 sub auto_refresh {
@@ -50,4 +53,3 @@ sub auto_refresh {
     system("sudo pacman --sync --sysupgrade --downloadonly");
     system("sudo pacman --sync --sysupgrade");
 }
-
