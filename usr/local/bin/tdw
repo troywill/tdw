@@ -23,15 +23,20 @@ if ( AUTO_PULL ) {
 }
 
 sub auto_pull {
-    chdir '/stow';
+    chdir STOW_DIR;
     my @dirs = <*>;
     foreach (@dirs) {
-	sleep 1; chdir $_;
-	if ( -e '.git/config' ) {
-	    print "==> In dir $_\n";
-	    system("git pull origin master");
+      sleep 1; chdir $_;
+      if ( -e '.git/config' ) {
+	print "==> In dir $_: git pull origin master...";
+	my $result = `git pull origin master 2>/dev/null`;
+	if ( $result =~ /^Already up-to-date/ ) {
+	  print " OK.\n"
+	} else {
+	  print $result;
 	}
-	chdir '/stow';
+      }
+      chdir STOW_DIR;
     };
     print ":: Checking for diffs...\n";
     foreach (@dirs) {
@@ -43,7 +48,7 @@ sub auto_pull {
 		print $diff;
 	    }
 	}
-	chdir '/stow';
+	chdir STOW_DIR;
     };
 }
 
