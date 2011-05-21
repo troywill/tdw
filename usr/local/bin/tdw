@@ -42,8 +42,6 @@ sub auto_pull {
 	}
 	chdir '/stow';
     };
-    print UMOUNT, "\n";
-    system UMOUNT;
 }
 
 sub auto_refresh {
@@ -54,4 +52,6 @@ sub auto_refresh {
     system("sudo pacman --sync --refresh");
     system("sudo pacman --sync --sysupgrade --downloadonly");
     system("sudo pacman --sync --sysupgrade");
+    print UMOUNT, "\n";
+    system UMOUNT;
 }
