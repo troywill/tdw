@@ -5,6 +5,7 @@ use strict;
 use constant AUTO_REFRESH => 1;
 use constant UDEV_SNAFU => 1;
 use constant AUTO_PULL => 1;
+use constant STOW_DIR => '/stow';
 
 use constant THUMB => '/dev/disk/by-label/thumb_root';
 use constant MOUNT => 'sudo mount -v -t ext4 /dev/disk/by-label/thumb_root /mnt/root.thumb/';
@@ -20,6 +21,7 @@ if ( AUTO_REFRESH ) {
 if ( AUTO_PULL ) {
     &auto_pull;
 }
+
 sub auto_pull {
     chdir '/stow';
     my @dirs = <*>;
@@ -37,7 +39,7 @@ sub auto_pull {
 	if ( -e '.git/config' ) {
 	    my $diff = `git diff --name-only`;
 	    if ( length($diff) > 0 ) {
-		print "----------------------\nDIFF: ", length($diff), "$_\n";
+		print "----------------------\nDIFF: ", length($diff), ", $_\n";
 		print $diff;
 	    }
 	}
