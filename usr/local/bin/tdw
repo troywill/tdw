@@ -26,6 +26,7 @@ sub auto_pull {
     foreach (@dirs) {
 	sleep 1; chdir $_;
 	if ( -e '.git/config' ) {
+	    print "==> In dir $_\n";
 	    system("git pull origin master");
 	}
 	chdir '/stow';
