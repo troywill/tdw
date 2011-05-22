@@ -37,6 +37,8 @@ sub auto_pull {
 	print "\n==>$_\n";
 	print $result;
       }
+      system("git commit -a");
+      system("git push origin master");
     }
     chdir STOW_DIR;
   }
