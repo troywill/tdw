@@ -28,6 +28,7 @@ sub auto_pull {
   my @dirs = <*>;
   foreach (@dirs) {
     sleep 1; chdir $_;
+    print "$_\n";
     if ( -e '.git/config' ) {
       my $result = `git pull origin master 2>/dev/null`;
       if ( $result =~ /^Already up-to-date/ ) {
