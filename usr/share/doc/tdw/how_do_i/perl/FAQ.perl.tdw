@@ -33,3 +33,9 @@ END
 perl -pi -e 's/searchterm/replaceterm/' *.cpp
 
 http://wiki.hypexr.org/wikka.php?wakka=PerlFindReplace
+
+5. How do I turn on autoflushing?
+See "flushing output" in perlfaq8 System Interaction
+$oldh = select(DEV)
+$| = 1;
+select($oldh);
