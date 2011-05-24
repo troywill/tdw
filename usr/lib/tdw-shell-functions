@@ -71,6 +71,7 @@ t-s () {
     DIR="${HOME}/success/2011/05/${DAY}"
     mkdir --parent ${DIR}
     cd ${DIR}
+    emacs "actions-2011-05-${DAY}.txt"
 }
 
 t-csv () {
