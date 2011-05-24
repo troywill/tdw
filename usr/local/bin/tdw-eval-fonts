@@ -1,0 +1,13 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my @files = <*>;
+
+foreach my $file ( @files ) {
+    print "$file\n";
+    system("setfont $file -16");
+    system("showconsolefont");
+    <STDIN>;
+}
+/usr/share/kbd/consolefonts
