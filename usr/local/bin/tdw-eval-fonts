@@ -2,12 +2,17 @@
 use warnings;
 use strict;
 
+open( my $out, ">>", '/tmp/nice_fonts' ) or die;
+
+chdir '/usr/share/kbd/consolefonts';
 my @files = <*>;
 
 foreach my $file ( @files ) {
     print "$file\n";
     system("setfont $file -16");
     system("showconsolefont");
-    <STDIN>;
+    chomp ( my $input = <STDIN> );
+    print $out $file if $input eq 's';
 }
-/usr/share/kbd/consolefonts
+
+close $out;
