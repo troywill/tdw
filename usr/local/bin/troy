@@ -1,2 +1,4 @@
-#!/bin/sh
-/bin/login -f troy
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
