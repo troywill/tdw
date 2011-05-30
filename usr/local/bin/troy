@@ -2,3 +2,4 @@
 use warnings;
 use strict;
 
+system("perl-wireless-connect");
