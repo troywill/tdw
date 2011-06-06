@@ -1,0 +1,41 @@
+#!/bin/bash
+
+BASE_URL='http://192.168.1.4:3000'
+CONTROLLER='welcome/login'
+HEADER_FILE='_temp.header'
+COOKIE_FILE='cookie_file'
+READINGS_URL="${BASE_URL}/readings"
+
+echo Weight? 
+read WEIGHT
+
+authenticate () {
+    curl --data 'username=troy&password=ames' \
+	--dump-header ${HEADER_FILE} \
+	${BASE_URL}/${CONTROLLER}
+}
+
+write_cookie () {
+    grep ookie ${HEADER_FILE} > ${COOKIE_FILE}
+}
+
+retrieve_readings () {
+    curl --cookie ${COOKIE_FILE} ${READINGS_URL}.json > data.json
+}
+
+new_reading () {
+    DATE=`date --rfc-3339=seconds`
+    curl --cookie ${COOKIE_FILE} \
+	--header 'Accept:application/json' \
+	--request POST \
+	--header 'Content-Type:application/json' \
+	--data '{"reading":{"reading_time":"'"${DATE}"'","weight":"'${WEIGHT}'"}}' \
+	${READINGS_URL}.json
+}
+
+# WORKS	--data '{"reading":{"reading_time":"2020-01-01 11:11:11-07:00","weight":"10"}}' \
+
+authenticate
+write_cookie
+new_reading
+# retrieve_readings
