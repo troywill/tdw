@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my $file = $ARGV[0] or die "Please suppy a file name";
+my $details = `file $file`;
+$details =~ /.*?(\d+) x (\d+)/;
+my $x = $1;
+my $y = $2;
+print "[$x][$y]";
+my $vertical = 800 /  $x * $y;
+$vertical = int($vertical);
+
+system("mplayer -quiet -zoom -x 800 -y $vertical $file");
