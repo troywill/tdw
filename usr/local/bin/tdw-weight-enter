@@ -1,13 +1,10 @@
 #!/bin/bash
 
-BASE_URL='http://192.168.1.4:3000'
+BASE_URL='http://usahealthscience.com:3000'
 CONTROLLER='welcome/login'
 HEADER_FILE='_temp.header'
 COOKIE_FILE='cookie_file'
 READINGS_URL="${BASE_URL}/readings"
-
-echo -n "Weight? "
-read WEIGHT
 
 authenticate () {
     curl --data 'username=troy&password=ames' \
@@ -21,9 +18,12 @@ write_cookie () {
 
 retrieve_readings () {
     curl --cookie ${COOKIE_FILE} ${READINGS_URL}.json > data.json
+    curl --cookie ${COOKIE_FILE} ${BASE_URL} > welcome.html
 }
 
 new_reading () {
+    echo -n "Weight? "
+    read WEIGHT
     DATE=`date --rfc-3339=seconds`
     curl --silent --cookie ${COOKIE_FILE} \
 	--header 'Accept:application/json' \
@@ -35,5 +35,5 @@ new_reading () {
 
 authenticate
 write_cookie
+retrieve_readings
 new_reading
-# retrieve_readings
