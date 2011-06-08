@@ -2,16 +2,20 @@
 use warnings;
 use strict;
 
-my $sleep = shift;
-
-my @fonts = </lib/kbd/consolefonts/*.gz>;
+my @fonts = </lib/kbd/consolefonts/i*>;
 
 foreach my $font ( @fonts ) {
-    print `clear`;
-    print "\n==> $font <==\n";
+    display($font);
     `setfont $font`;
     `setfont -16 $font`;
     print `showconsolefont`;
-#    select (undef, undef, undef, $sleep);
     <STDIN>;
 }
+
+sub display {
+    my $font = shift;
+    system($font);
+    my ( $wchar, $hchar, $wpixels, $hpixels ) = GetTerminalSize();
+    print "$font, $wchar, $hchar, $wpixels, $hpixels\n";
+}
+

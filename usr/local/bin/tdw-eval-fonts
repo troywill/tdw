@@ -1,18 +1,28 @@
 #!/usr/bin/env perl
 use warnings;
 use strict;
+use Term::ReadKey;
 
 open( my $out, ">>", '/tmp/nice_fonts' ) or die;
+my $letter = shift or die "please supply first letter of font";
+chomp $letter;
 
 chdir '/usr/share/kbd/consolefonts';
-my @files = <*>;
+my @files = <$letter*>;
 
 foreach my $file ( @files ) {
-    print "$file\n";
-    system("setfont $file -16");
-    system("showconsolefont");
+#    system("setfont $file -16");
+    display($file);
+#    system("showconsolefont");
     chomp ( my $input = <STDIN> );
     print $out $file if $input eq 's';
 }
 
 close $out;
+
+sub display {
+    my $font = shift;
+    system("setfont $font");
+    my ( $wchar, $hchar, $wpixels, $hpixels ) = GetTerminalSize();
+    print "$font, $wchar, $hchar, $wpixels, $hpixels\n";
+}
