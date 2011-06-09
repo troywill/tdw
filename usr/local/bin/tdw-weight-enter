@@ -17,8 +17,7 @@ write_cookie () {
 }
 
 retrieve_readings () {
-    curl --cookie ${COOKIE_FILE} ${READINGS_URL}.json > data.json
-    curl --cookie ${COOKIE_FILE} ${BASE_URL} > welcome.html
+    curl --cookie ${COOKIE_FILE} ${BASE_URL}/perl/index.json > data.json
 }
 
 new_reading () {
