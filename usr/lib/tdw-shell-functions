@@ -110,7 +110,7 @@ alias f60='find . -cmin -60 -type f | grep -v chromium | grep -v macromedia'
 alias d='emacs .';
 alias e='emacs'
 alias c='clear && /bin/ls --color'
-alias cl='rm --verbose *~; /bin/ls --color'
+alias cl='rm --verbose *~; rm -rvf ~/.emacs_backups; /bin/ls --color'
 alias ..='cd .. && clear && ls --color'
 
 alias rcs='cd /home/troy/rcs && ls --color'
