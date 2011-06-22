@@ -1,0 +1,11 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+&do_system_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0");
+
+sub do_system_command {
+    my $command = shift;
+    print "=> $command\n";
+    system $command;
+}
