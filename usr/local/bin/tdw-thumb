@@ -1,0 +1,38 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+my $SUDO = "/usr/bin/sudo";
+my $MOUNT = "/bin/mount";
+
+system "$SUDO /sbin/fdisk -l /dev/sdb";
+system "$SUDO /sbin/fdisk -l /dev/sdc";
+system "$SUDO /sbin/fdisk -l /dev/sdd";
+
+my %disks = ( 
+    '/mnt/root.thumb' => '/dev/disk/by-label/thumb_root',
+    '/mnt/root.thumb' => '/dev/sdc2'
+);
+
+&loop_disks(%disks);
+
+sub loop_disks () {
+    my %hash = @_;
+    foreach my $key ( keys %hash ) {
+	my ( $mount_point, $partition ) = ( $key, $hash{$key} );
+	if ( -e $partition ) {
+	    my $command = "$SUDO $MOUNT $partition $mount_point";
+	    print "=> $command\n";
+	    if ( !-e $mount_point ) {
+		print "$mount_point DOES NOT EXIST\n";
+		my $command = "$SUDO mkdir --verbose $mount_point";
+		print "=> $command\n";
+		system $command;
+	    }
+	    system $command;
+	}
+    };
+}
+
+# sudo mount 
+# sudo mount /dev/disk/by-label/Thai-1 /mnt/Thai-1
+
