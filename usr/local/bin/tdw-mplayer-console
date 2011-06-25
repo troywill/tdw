@@ -8,7 +8,7 @@ $details =~ /.*?(\d+) x (\d+)/;
 my $x = $1;
 my $y = $2;
 print "[$x][$y]";
-my $vertical = 800 /  $x * $y;
+my $vertical = 1024 /  $x * $y;
 $vertical = int($vertical);
 
-system("mplayer -quiet -zoom -x 800 -y $vertical $file");
+system("mplayer -really-quiet -zoom -x 1024 -y $vertical $file");
