@@ -7,8 +7,9 @@ my $details = `file $file`;
 $details =~ /.*?(\d+) x (\d+)/;
 my $x = $1;
 my $y = $2;
-print "[$x][$y]";
+print "[$x][$y]\n";
 my $vertical = 1024 /  $x * $y;
 $vertical = int($vertical);
-
+print "[1024][$vertical]\n";
+sleep 4;
 system("mplayer -really-quiet -zoom -x 1024 -y $vertical $file");
