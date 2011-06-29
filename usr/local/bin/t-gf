@@ -1,6 +1,0 @@
-#!/bin/bash
-set -o errexit
-EDITOR="emacs"
-echo 'wget --no-clobber ' >> fetch.sh
-grep SOURCE_URL $1 >> fetch.sh && ${EDITOR} fetch.sh
-sh fetch.sh
