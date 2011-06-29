@@ -2,6 +2,9 @@
 use warnings;
 use strict;
 
+my $pid = `ps aux | grep chromium | head --lines=1 | cut -c 10-14`;
+chomp( $pid );
+&do_system_command( "kill $pid" );
 &do_system_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0");
 
 sub do_system_command {
