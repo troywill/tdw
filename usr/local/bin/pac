@@ -4,9 +4,14 @@ use strict;
 # troydwill@gmail.com, June 2010
 my $SUDO = &get_sudo();
 my $command = "$SUDO pacman @ARGV";
-print "=> $command\n";
-sleep 1;
-system $command;
+
+if ( $ARGV[0] eq 'update' ) {
+    system ("$SUDO pacman --sync --refresh");
+    system ("$SUDO pacman --sync --sysupgrade");
+} else {
+    print "=> $command\n";
+    system $command;
+}
 
 sub get_sudo {
     if ( $ENV{"USER"} ne 'root') {
