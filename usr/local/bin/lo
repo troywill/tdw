@@ -10,7 +10,7 @@ do_system_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterfac
 exit;
 
 sub quit_chromium {
-    my $pid = `ps aux | grep chromium | head --lines=1 | cut -c 10-14`;
+    my $pid = `ps aux | grep chromium | grep -v grep | head --lines=1 | cut -c 10-14`;
     if ( $pid ) {
 	chomp( $pid );
 	print "Sending TERM signal to chromium process $pid...";
