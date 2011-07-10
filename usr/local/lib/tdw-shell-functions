@@ -4,9 +4,6 @@ export EDITOR="emacs"
 
 #### Begin Rails development funtions ####
 # Rails change directory functions
-CURRENT_APP_NAME="vehicle_22"
-CURRENT_APP_NAME="depot"
-CURRENT_APP_NAME="cards"
 CURRENT_APP_NAME="marvscars"
 CURRENT_APP_DIR="${HOME}/devel/rails/${CURRENT_APP_NAME}/"
 
@@ -74,32 +71,10 @@ t-s () {
     emacs "actions-2011-05-${DAY}.txt"
 }
 
-t-csv () {
-    cd ${HOME}/rcs/stowball/data/shilohSchema/2010_spring/csv
-    git pull
-    /bin/ls --color
-}
-
-t-scripts () {
-    cd /var/lib/stowball/data/scripts
-    /bin/ls --color
-}
-
-u () {
-    cd ${HOME}/rcs/stowball/utilities
-    /bin/ls --color
-}
-
-eb () {
-    BASHRC="$HOME/.bashrc"
-    $EDITOR $BASHRC && source $BASHRC
-}
-
 tz () {
     echo "tar -xf $1" && tar -xf $1
 }
 
-alias ebd='pwd >> /etc/bashrc; emacs /etc/bashrc && source /etc/bashrc'
 alias dog='git pull; git commit -a; push origin master'
 alias doggy="git pull; git commit -a -m 'minor'; git push origin master"
 alias csb='cd ~/rcs/stowball && ./stowball-write-db-from-csv'
@@ -113,15 +88,7 @@ alias c='clear && /bin/ls --color'
 alias cl='rm --verbose *~; rm -rvf ~/.emacs_backups; /bin/ls --color'
 alias ..='cd .. && clear && ls --color'
 
-alias rcs='cd /home/troy/rcs && ls --color'
-
-t-arora-google () {
-    arora "http://www.google.com/search?hl=C&q=${1}" &
+#### Ruby/Rails testing functions
+rtf () {
+    echo "rake test:functionals" && rake test:functionals
 }
-
-# pacman functions
-p () {
-    sudo pacman --sync $1
-}
-
-
