@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+use constant STOW_DIR => '/stow';
+chdir STOW_DIR;
+my @dirs = <*>;
+chdir $ENV{HOME};
+foreach (@dirs) {
+    print "--------- sudo stow2 -D $_ -------------------------------\n";
+    my $result = `sudo stow2 -D $_ 2>&1`;
+}
