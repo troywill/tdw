@@ -7,6 +7,7 @@ chdir STOW_DIR;
 my @dirs = <*>;
 chdir $ENV{HOME};
 foreach (@dirs) {
+    print "sudo stow2 -R $_ 2>&1\n";
     my $result = `sudo stow2 -R $_ 2>&1`;
     if ( $result =~ /conflicts detected/ ) {
 	print "--------- CONFLICT in $_ -------------------------------\n";
