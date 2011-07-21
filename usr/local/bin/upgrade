@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 
-print `sudo mount /dev/disk/by-label/thumb_root /mnt/root.thumb/`;
-print `sudo pacman --sync --refresh`;
-print `sudo pacman --sync --sysupgrade`;
-print `sudo killall udevd`;
+system("sudo mount /dev/disk/by-label/thumb_root /mnt/root.thumb/");
+system("sudo pacman --sync --refresh");
+system("sudo pacman --sync --sysupgrade");
+system("sudo killall udevd");
