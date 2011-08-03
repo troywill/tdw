@@ -1,0 +1,5 @@
+#!/bin/sh
+audio_player="mplayer"
+# http://www.ve3sre.com/streaming3.html
+playlist="http://minnesota.publicradio.org/tools/play/streams/classical.pls"
+${audio_player} ${playlist}
