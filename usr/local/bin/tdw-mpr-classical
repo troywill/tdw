@@ -1,3 +1,24 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+my $audio_player = 'mplayer';
+my $playlist = 'http://minnesota.publicradio.org/tools/play/streams/classical.pls';
+
+print "=> $ARGV[0]";
+sleep 1;
+
+
+if ( $ARGV[0] ) {
+    my $seconds = $ARGV[0] * 60;
+    system ( "${audio_player} -endpos $seconds ${playlist}" );
+} else {
+    system ( "${audio_player} -endpos ${playlist}" );
+}
+
+__END__
+
+
+
 #!/bin/sh
 audio_player="mplayer"
 # http://www.ve3sre.com/streaming3.html

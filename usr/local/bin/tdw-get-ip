@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+use LWP::Simple;
+
+my $url = 'http://checkip.dyndns.org/';
+my $content = get $url;
+die "Couldn't get $url" unless defined $content;
+
+if($content =~ m/(\d+)\.(\d+)\.(\d+)\.(\d+)/) {
+    print "=> $1.$2.$3.$4 <=\n";
+} else {
+    print "Fresh Air is apparently jazzless today.\n";
+}
