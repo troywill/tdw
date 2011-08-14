@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 use warnings;
 use strict;
-my $audio_player = 'mplayer';
-my $playlist = 'http://minnesota.publicradio.org/tools/play/streams/classical.pls';
+my $audio_player = 'mplayer -nocache';
+my $playlist = 'http://minnesota.publicradio.org/tools/play/streams/the_current.pls';
 
 if ( $ARGV[0] ) {
     my $seconds = $ARGV[0] * 60;
