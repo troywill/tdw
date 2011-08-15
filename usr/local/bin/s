@@ -5,6 +5,7 @@ my $sleep = 2;
 my $SUDO = '/usr/bin/sudo';
 my $REBOOT = '/sbin/shutdown -r now';
 
+quit_chromium();
 &do_system_command( "sync" );
 &do_system_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0");
 &do_system_command( "sleep $sleep && $SUDO $REBOOT" );
@@ -15,4 +16,14 @@ sub do_system_command {
     my $command = shift;
     print "=> $command\n";
     system $command;
+}
+
+sub quit_chromium {
+    my $pid = `ps aux | grep chromium | grep -v grep | head --lines=1 | cut -c 10-14`;
+    if ( $pid ) {
+	chomp( $pid );
+	print "Sending TERM signal to chromium process $pid...";
+	&do_system_command( "kill -TERM $pid" );
+	sleep 1;
+    }
 }
