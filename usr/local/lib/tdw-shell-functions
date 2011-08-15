@@ -21,7 +21,7 @@ rrp () {
 }
 
 glayouts () {
-    git clone git@github.com:troywill/tdw-css
+    git clone git@github.com:troywill/css-tdw
 }
 
 rgc () {

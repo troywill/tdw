@@ -30,7 +30,7 @@ sub quit_chromium {
     if ( $pid ) {
 	chomp( $pid );
 	print "Sending TERM signal to chromium process $pid...";
-	&do_system_command( "kill -TERM $pid" );
+	system( "kill -TERM $pid" );
 	sleep 1;
     }
 }
