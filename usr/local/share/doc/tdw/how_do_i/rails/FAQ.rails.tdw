@@ -62,3 +62,5 @@ Q10. Add a column with a migration?
  rails generate migration add_quantity_to_line_item quantity:integer
  rails generate migration add_keep_to_listings keep:boolean
 
+Q11. How do I make a stand alone Ruby program for a Rails application
+A11. require "config/environment.rb" ( See "24.1 A Stand-Alone Application Using Active Record" in the Agile book )
