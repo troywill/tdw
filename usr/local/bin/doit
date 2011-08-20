@@ -1,4 +1,11 @@
-#!/usr/bin/env perl
-use warnings;
-use strict;
-system("mplayer /home/troy/video/japanese_01.flv");
+#!/bin/sh
+ts () {
+    DAY=`date +%d`;
+    DIR="${HOME}/success/2011/07/${DAY}"
+    mkdir --parent ${DIR}
+    cd ${DIR}
+    emacs "actions-2011-08-${DAY}.txt"
+}
+
+ts
+tdw-mpr-classical 5
