@@ -1,7 +1,7 @@
 #!/bin/sh
 ts () {
     DAY=`date +%d`;
-    DIR="${HOME}/success/2011/07/${DAY}"
+    DIR="${HOME}/success/2011/08/${DAY}"
     mkdir --parent ${DIR}
     cd ${DIR}
     emacs "actions-2011-08-${DAY}.txt"

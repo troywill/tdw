@@ -68,7 +68,7 @@ t-s () {
     DIR="${HOME}/success/2011/08/${DAY}"
     mkdir --parent ${DIR}
     cd ${DIR}
-    emacs "actions-2011-07-${DAY}.txt"
+    emacs "actions-2011-08-${DAY}.txt"
 }
 
 tz () {
