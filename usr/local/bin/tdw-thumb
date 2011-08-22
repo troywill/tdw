@@ -9,8 +9,7 @@ system "$SUDO /sbin/fdisk -l /dev/sdc";
 system "$SUDO /sbin/fdisk -l /dev/sdd";
 
 my %disks = ( 
-    '/mnt/root.thumb' => '/dev/disk/by-label/thumb_root',
-    '/mnt/root.thumb' => '/dev/sdc2'
+    '/mnt/root.thumb' => '/dev/disk/by-label/root.thumb'
 );
 
 &loop_disks(%disks);
@@ -32,7 +31,3 @@ sub loop_disks () {
 	}
     };
 }
-
-# sudo mount 
-# sudo mount /dev/disk/by-label/Thai-1 /mnt/Thai-1
-

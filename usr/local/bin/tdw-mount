@@ -7,8 +7,8 @@ my $MOUNT = "/bin/mount";
 system "$SUDO /sbin/fdisk -l /dev/sdb";
 
 my %disks = ( 
-    '/mnt/Thai-1' => '/dev/disk/by-label/Thai-1',
-    '/mnt/Thai-2' => '/dev/disk/by-label/Thai-2'
+    '/mnt/thai1' => '/dev/disk/by-label/Thai-1',
+    '/mnt/thai2' => '/dev/disk/by-label/Thai-2'
 );
 
 &loop_disks(%disks);
