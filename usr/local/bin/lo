@@ -3,8 +3,10 @@ use warnings;
 use strict;
 
 quit_chromium();
+
 do_system_command( "qdbus org.kde.NepomukServer /nepomukserver org.kde.NepomukServer.quit" );
 do_system_command( "qdbus org.freedesktop.Akonadi /Server quit" );
+do_system_command( "akonadi_control stop" );
 do_system_command( "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 0 0 0");
 
 exit;
