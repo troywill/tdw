@@ -2,9 +2,10 @@
 ts () {
     DAY=`date +%d`;
     DIR="${HOME}/success/2011/09/${DAY}"
+    FILENAME="actions-2011-09-${DAY}.txt"
     mkdir --parent ${DIR}
     cd ${DIR}
-    emacs "actions-2011-08-${DAY}.txt"
+    emacs ${FILENAME}
 }
 
 ts
