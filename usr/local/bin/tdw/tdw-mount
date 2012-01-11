@@ -4,11 +4,11 @@ use strict;
 my $SUDO = "/usr/bin/sudo";
 my $MOUNT = "/bin/mount";
 
-system "$SUDO /sbin/fdisk -l /dev/sdb";
-
 my %disks = ( 
     '/mnt/thai1' => '/dev/disk/by-label/Thai-1',
-    '/mnt/thai2' => '/dev/disk/by-label/Thai-2'
+    '/mnt/thai2' => '/dev/disk/by-label/Thai-2',
+    '/mnt/root.thumb' => '/dev/disk/by-label/root.thumb',
+    '/mnt/media' => '/dev/disk/by-label/thumb.media'
 );
 
 &loop_disks(%disks);
@@ -30,6 +30,10 @@ sub loop_disks () {
 	}
     };
 }
+
+print "--------------------------------------\n";
+system "$SUDO /sbin/fdisk -l /dev/sdb";
+
 
 # sudo mount 
 # sudo mount /dev/disk/by-label/Thai-1 /mnt/Thai-1
