@@ -1,8 +1,10 @@
 #!/usr/bin/perl
 use warnings;
 use strict;
-`sudo umount /dev/disk/by-uuid/722d1934-8d13-4a97-b175-6c926a280ec7`;
-`sudo umount /media/floppy/`;
 
+my @mounts = qw( /dev/disk/by-label/root.thumb );
 
-
+foreach my $mount ( @mounts ) {
+    if ( -e $mount ) {
+    print `sudo umount -v $mount`;
+}
