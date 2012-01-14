@@ -1,0 +1,10 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+my $hwclock = `hwclock --show`;
+my $date = `date`;
+print "hwclock => $hwclock";
+print "date    => $date";
+
+
