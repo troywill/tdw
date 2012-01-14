@@ -2,9 +2,11 @@
 use warnings;
 use strict;
 
-my $hwclock = `hwclock --show`;
+my $hwclock = `sudo hwclock --show`;
 my $date = `date`;
+my $drift = `cat /var/lib/ntp/ntp.drift`;
+
 print "hwclock => $hwclock";
 print "date    => $date";
-
+print "drift: $drift";
 
