@@ -18,3 +18,7 @@ Answer 2>&1
 cat > /srv/http/test.php <<EOF
 <?php phpinfo(); ?>
 EOF
+
+5. What's a good Bash tutorial?
+http://tldp.org/LDP/abs/html/index.html [2011-01-13 TDW]
+
