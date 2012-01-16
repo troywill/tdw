@@ -2,31 +2,8 @@
 use warnings;
 use strict;
 
-chdir $ENV{'HOME'};
+system("pkill -15 chromium");
+system("pkill -9 chromium");
 system("rm -rvf .cache");
+chdir $ENV{'HOME'};
 system("chromium &");
-
-sleep 5;
-
-system("ps aufx | grep chr > /tmp/ps");
-
-sub is_running {
-
-    troy     22419  0.9  3.7 276280 38508 pts/3    SLl  08:02   4:03              |   \_ /usr/lib/chromium/chromium INSTALL.html
-troy     22420  0.0  0.3 136208  3660 pts/3    Sl   08:02   0:02              |       \_ /usr/lib/chromium/chromium INSTALL.html
-troy     22750  0.1  0.0      0     0 pts/3    Z    08:24   0:30              |       \_ [chromium] <defunct>
-troy     23054  0.0  0.0      0     0 pts/3    Z    08:47   0:04              |       \_ [chromium] <defunct>
-troy     26482  0.2  0.2   6052  2040 pts/1    S+   15:01   0:00              |   \_ perl ./startchromium
-troy     26539  0.0  0.1   5236  1392 pts/1    S+   15:01   0:00              |       \_ sh -c ps aufx | grep chr > /tmp/ps
-troy     26541  0.0  0.0   4552   932 pts/1    S+   15:01   0:00              |           \_ grep chr
-troy     22422  0.0  0.2 135376  2988 pts/3    S    08:02   0:00 /usr/lib/chromium/chromium --type=zygote
-root     22423  0.0  0.0      0     0 pts/3    Z    08:02   0:00  \_ [chromium-sandbo] <defunct>
-troy     26485 98.0  6.1 289368 63112 pts/1    RLl+ 15:01   0:04 /usr/lib/chromium/chromium
-troy     26486  2.0  0.5 136208  6072 pts/1    Sl+  15:01   0:00  \_ /usr/lib/chromium/chromium
-troy     26488  1.2  1.0 102592 10520 pts/1    S+   15:01   0:00 /usr/lib/chromium/chromium --type=zygote
-root     26489  0.0  0.0      0     0 pts/1    Z+   15:01   0:00  \_ [chromium-sandbo] <defunct>
-troy     26507 19.3  2.3 177308 24448 pts/1    Rl+  15:01   0:00  \_ /usr/lib/chromium/chromium --type=renderer --lang=en-US --force-fieldtest=ConnCountImpact/conn_count_6/ConnnectBackupJobs/ConnectBackupJobsEnabled/DnsImpact/default_enabled_prefetch/DnsParallelism/parallel_default/GlobalSdch/global_enable_sdch/IdleSktToImpact/idle_timeout_10/Instant/Inactive/Prefetch/ContentPrefetchPrerender2/PrerenderFromOmniboxHeuristic/ConservativeAlgorithm/ProxyConnectionImpact/proxy_connections_32/SpdyCwnd/cwnd16/SpdyImpact/npn_with_spdy/WarmSocketImpact/warm_socket/ --channel=26485.0xb92b4360.1916248224
-troy     26515 21.6  2.3 207568 24116 pts/1    Sl+  15:01   0:00  \_ /usr/lib/chromium/chromium --type=renderer --lang=en-US --force-fieldtest=ConnCountImpact/conn_count_6/ConnnectBackupJobs/ConnectBackupJobsEnabled/DnsImpact/default_enabled_prefetch/DnsParallelism/parallel_default/GlobalSdch/global_enable_sdch/IdleSktToImpact/idle_timeout_10/Instant/Inactive/Prefetch/ContentPrefetchPrerender2/PrerenderFromOmniboxHeuristic/ConservativeAlgorithm/ProxyConnectionImpact/proxy_connections_32/SpdyCwnd/cwnd16/SpdyImpact/npn_with_spdy/WarmSocketImpact/warm_socket/ --extension-process --channel=26485.0xb91a0ea0.116090002
-
-    
-}
