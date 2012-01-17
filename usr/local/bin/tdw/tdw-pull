@@ -6,9 +6,9 @@ my $stow_dir = "/stow";
 chdir $stow_dir or die "Unable to chdir to $stow_dir";
 my @dirs = <*>;
 foreach my $dir ( @dirs ) {
-    print "==> $dir\n";
     chdir $dir or die "Unable to chdir $dir";
     if ( -e '.git' ) {
+	print "==> $dir\n";
 	system("git pull");
     }
     chdir $stow_dir or die "Unable to chdir to $stow_dir";
