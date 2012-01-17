@@ -1,11 +1,13 @@
-#!/bin/bash
-set -o errexit
-set -o nounset
-STOW_DIR="/stow"
+#!/usr/bin/env perl
+use warnings;
+use strict;
 
-for DIR in "tdw" ; do
-    TARGET_DIR="${STOW_DIR}/${DIR}"
-    echo "== $TARGET_DIR=="
-    cd ${TARGET_DIR}
-    git pull
-done
+my $stow_dir = "/stow";
+chdir $stow_dir or die "Unable to chdir to $stow_dir";
+my @dirs = <*>;
+foreach my $dir ( @dirs ) {
+    print "==> $dir\n";
+    chdir $dir or die "Unable to chdir $dir";
+    system("git pull");
+    chdir $stow_dir or die "Unable to chdir to $stow_dir";
+}
