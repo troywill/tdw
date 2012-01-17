@@ -1,3 +1,0 @@
-#!/bin/sh
-sync && sudo /sbin/shutdown -r now
-
