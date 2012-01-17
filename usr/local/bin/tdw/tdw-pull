@@ -8,6 +8,8 @@ my @dirs = <*>;
 foreach my $dir ( @dirs ) {
     print "==> $dir\n";
     chdir $dir or die "Unable to chdir $dir";
-    system("git pull");
+    if ( -e '.git' ) {
+	system("git pull");
+    }
     chdir $stow_dir or die "Unable to chdir to $stow_dir";
 }
