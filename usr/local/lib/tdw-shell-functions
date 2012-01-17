@@ -84,8 +84,8 @@ alias f5='find . -cmin -5 -type f'
 alias d5='find . -cmin -5 -type d'
 alias f60='find . -cmin -60 -type f | grep -v chromium | grep -v macromedia'
 
-alias d='emacs .';
-alias e='emacs'
+alias d='emacs -nw .';
+alias e='emacs -nw'
 alias c='clear && /bin/ls --color'
 alias cl='rm --verbose *~; rm -rvf ~/.emacs_backups; /bin/ls --color'
 alias ..='cd .. && clear && ls --color'

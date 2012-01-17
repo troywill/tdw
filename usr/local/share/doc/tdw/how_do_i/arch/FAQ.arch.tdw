@@ -7,3 +7,5 @@ Q3. How do I install Arch Linux to a SD card?
 Q4. How do I manually start openssh daemon?
 /etc/rc.d/httpd start
 DAEMONS=(httpd) in /etc/rc.conf
+Q5. How do I install a AUR package?
+wget http://aur.archlinux.org/packages/em/emacs-org-mode/PKGBUILD
