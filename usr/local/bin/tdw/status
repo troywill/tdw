@@ -1,14 +1,20 @@
 #!/usr/bin/env perl
 use warnings;
 use strict;
+
 use Net::Domain qw(hostname hostfqdn hostdomain);
 my $host = hostfqdn;
 print "$host\n";
+
+use Socket;
+my $address = inet_ntoa(
+    scalar gethostbyname( $host || 'localhost' )
+    );
+print "$address\n";
+
 my $ping = `ping -c1 192.168.1.1`;
 if ( $ping=~ /1 received/ ) {
     print "pinged router\n";
 } else {
     print "Did NOT ping router\n";
 }    
-my $ip = `ip addr | grep inet | grep 192`;
-print $ip;
