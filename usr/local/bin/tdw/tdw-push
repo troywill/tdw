@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+my $STOW_DIR = '/stow';
+chdir $STOW_DIR or die "Unable to chdir to $STOW_DIR";
+my @dirs = <*>;
+  foreach my $dir (@dirs) {
+    chdir $dir or warn "Unable to chdir $dir";
+    if ( -e '.git' ) {
+      system("git commit -a");
+      system("git push origin master");
+    }
+    chdir $STOW_DIR or die;
+  }
