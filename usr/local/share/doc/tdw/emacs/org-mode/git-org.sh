@@ -1,6 +1,6 @@
 #!/bin/bash
-BUILD_DIR="~/Build/Emacs"
-mkdir ${BUILD_DIR}
+BUILD_DIR="${HOME}/Build/Emacs"
+mkdir --parent --verbose ${BUILD_DIR}
 cd ${BUILD_DIR}
 git clone git://orgmode.org/org-mode.git
 cd org-mode && make && make doc
