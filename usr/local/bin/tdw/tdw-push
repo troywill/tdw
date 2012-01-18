@@ -1,0 +1,9 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+system("pkill -15 chromium");
+system("pkill -9 chromium");
+system("rm -rvf .cache");
+chdir $ENV{'HOME'};
+system("chromium &");
