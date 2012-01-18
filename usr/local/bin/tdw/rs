@@ -1,8 +1,7 @@
 #!/bin/bash
 LOCAL="/home/troy/storage/"
 REMOTE="192.168.1.5::storage"
-RSYNC="rsync --archive --verbose"
+RSYNC="rsync --archive --delete --verbose"
 cd ${DIR}
-${RSYNC} ${LOCAL} ${REMOTE}
 ${RSYNC} ${REMOTE} ${LOCAL}
-
+${RSYNC} ${LOCAL} ${REMOTE}
