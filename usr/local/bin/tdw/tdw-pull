@@ -1,7 +1,7 @@
 #!/bin/bash
 set -o errexit
 LOCAL="/home/troy/storage/"
-REMOTE="192.168.1.5::storage"
+REMOTE="lady::storage"
 RSYNC="rsync --archive --delete --verbose"
 cd ${DIR}
 # pull changes
