@@ -5,7 +5,7 @@ use Cwd;
 # troydwill@gmail.com, June 2010
 my $SUDO = &get_sudo();
 my $cwd = getcwd;
-my $command = "$SUDO stow2 -v @ARGV";
+my $command = "$SUDO stow -v @ARGV";
 print "=> $command\n";
 sleep 1;
 system $command;
