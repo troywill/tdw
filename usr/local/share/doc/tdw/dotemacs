@@ -1,10 +1,8 @@
 (setq vc-follow-symlinks)
 (setq load-path (cons (expand-file-name "~/elisp") load-path))
-
-
-
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(require 'org-install)
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; set up unicode

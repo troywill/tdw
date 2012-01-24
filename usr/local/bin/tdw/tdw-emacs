@@ -7,6 +7,12 @@ cd ~ && ln --symbolic --verbose /usr/local/share/doc/tdw/dotemacs .emacs
 mkdir $LISP_DIR
 mkdir $GIT_DIR
 
+setup_org_mode () {
+    cd $GIT_DIR
+    git clone git://orgmode.org/org-mode.git
+    cd org-mode && make && make doc
+}
+
 setup_yaml () {
     cd $GIT_DIR
     git clone http://github.com/yoshiki/yaml-mode.git
@@ -15,6 +21,7 @@ setup_yaml () {
 }
 
 setup_yaml
+setup_org_mode
 
 exit
 1. How do I automatically follow a symbolic link to a version controlled file?
