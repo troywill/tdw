@@ -1,3 +1,2 @@
 #!/bin/bash
-cd ~ && ln --symbolic --verbose /usr/local/share/doc/tdw/DOTEMACS .emacs
-
+cd ~ && ln --symbolic --verbose /usr/local/share/doc/tdw/dotemacs .emacs
