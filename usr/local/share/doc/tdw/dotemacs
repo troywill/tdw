@@ -1,5 +1,6 @@
 (setq vc-follow-symlinks)
 (setq load-path (cons (expand-file-name "~/elisp") load-path))
+(setq load-path (cons (expand-file-name "~/elisp/org-mode") load-path))
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (require 'org-install)

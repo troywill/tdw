@@ -11,7 +11,7 @@ setup_org_mode () {
     cd $GIT_DIR
     git clone git://orgmode.org/org-mode.git
     cd org-mode && make && make doc
-    make prefix=/tmp lispdir=~/elisp install
+    make prefix=/tmp lispdir=~/elisp/org-mode install
 }
 
 setup_yaml () {
