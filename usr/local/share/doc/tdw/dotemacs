@@ -1,4 +1,8 @@
 (setq vc-follow-symlinks)
+(setq load-path (cons (expand-file-name "~/elisp") load-path))
+
+
+
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
@@ -15,7 +19,6 @@
 ;; MS Windows clipboard is UTF-16LE 
 (set-clipboard-coding-system 'utf-16le-dos)
 
-(setq load-path (cons (expand-file-name "~/elisp") load-path))
 (autoload 'word-count-mode "word-count"
           "Minor mode to count words." t nil)
 (global-set-key "\M-+" 'word-count-mode)

@@ -1,2 +1,27 @@
 #!/bin/bash
+set -o nounset
+
+LISP_DIR=~/elisp
+GIT_DIR=~/git
 cd ~ && ln --symbolic --verbose /usr/local/share/doc/tdw/dotemacs .emacs
+mkdir $LISP_DIR
+mkdir $GIT_DIR
+
+setup_yaml () {
+    cd $GIT_DIR
+    git clone http://github.com/yoshiki/yaml-mode.git
+    cd yaml-mode
+    cp --verbose yaml-mode.el $LISP_DIR
+}
+
+setup_yaml
+
+exit
+1. How do I automatically follow a symbolic link to a version controlled file?
+(setq vc-follow-symlinks)
+
+2. How do I edit Yaml files?
+
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
