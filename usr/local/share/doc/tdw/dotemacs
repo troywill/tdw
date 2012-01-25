@@ -49,8 +49,10 @@
 
 
 
-       (add-to-list 'load-path "~/elisp/emms/")
-        (require 'emms-setup)
-        (emms-standard)
-        (emms-default-players)
-      
+;; (add-to-list 'load-path "~/elisp/emms/")
+(condition-case err
+    ( require 'emms-setup )
+  (emms-standard)
+  (emms-default-players)
+  (error (message "Unable to load emms-setup package.")))
+
