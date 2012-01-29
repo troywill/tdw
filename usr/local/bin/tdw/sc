@@ -4,6 +4,8 @@ use strict;
 
 system("pkill -15 chromium");
 system("pkill -9 chromium");
+system("ps auxf | grep chr");
+sleep 3;
 system("rm -rvf .cache");
 chdir $ENV{'HOME'};
 system("chromium &");

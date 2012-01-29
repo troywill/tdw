@@ -1,12 +1,4 @@
 #!/bin/sh
-ts () {
-    DAY=`date +%d`;
-    DIR="${HOME}/success/2012/01/${DAY}"
-    FILENAME="actions-2012-01-${DAY}.txt"
-    mkdir --parent ${DIR}
-    cd ${DIR}
-    emacs ${FILENAME}
-}
+FILENAME="~/storage/doit.org"
+emacs -nw ${FILENAME}
 
-ts
-# tdw-mpr-classical 5
