@@ -21,6 +21,8 @@ setup_yaml () {
 ########## Main program ##########
 
 cd ~ && ln --symbolic --verbose /usr/local/share/doc/tdw/dotemacs .emacs
+cd ~/.emacs.d && ln --symbolic --verbose /usr/local/share/doc/tdw/emacs/.emacs.d/site-start.d
+
 cd ~ && ln --symbolic --verbose /usr/local/share/doc/tdw/screenrc.tdw .screenrc
 
 mkdir $LISP_DIR
