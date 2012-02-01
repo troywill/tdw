@@ -1,19 +1,15 @@
 (setq vc-follow-symlinks)
+
 (setq load-path (cons (expand-file-name "~/elisp") load-path))
-(setq load-path (cons (expand-file-name "~/elisp/org-mode") load-path))
+
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(require 'org-install)
-
-(autoload 'word-count-mode "word-count"
-          "Minor mode to count words." t nil)
-(global-set-key "\M-+" 'word-count-mode)
 
 (put 'upcase-region 'disabled nil)
+
 (setq vc-handled-backends nil)
 
+(load-file "~/.emacs.d/site-start.d/tdw-org-mode.el")
 (load-file "~/.emacs.d/site-start.d/tdw-web-browser.el")
 (load-file "~/.emacs.d/site-start.d/tdw-unicode.el")
 (load-file "~/.emacs.d/site-start.d/tdw-emms.el")
-
-
