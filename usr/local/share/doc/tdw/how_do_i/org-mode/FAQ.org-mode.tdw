@@ -1,0 +1,7 @@
+  -*- mode: org; fill-column:65 -*-
+* Q. Which line do I insert in a file to turn on org mode?
+  A.   -*- mode: org; fill-column:65 -*-
+
+
+
+
