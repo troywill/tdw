@@ -1,3 +1,4 @@
+  -*- mode: org; fill-column:65 -*-
 1. How do I set up my .bash and .bashprofile?
 
    From Bash info file: 6. Bash features, bash startup files
@@ -5,20 +6,15 @@
    "So, typically, your `~/.bash_profile' contains the line
      `if [ -f ~/.bashrc ]; then . ~/.bashrc; fi'
    after (or before) any login-specific initializations."
-
 2. How do I term off bell?
-setterm -blength 0 in /etc/inputrc
-or
-set bell-style none in /etc/inputrc
-
+   setterm -blength 0 in /etc/inputrc or
+   set bell-style none in /etc/inputrc
 3. How do I redirect STDERR to STDIN?
-Answer 2>&1
-
+  Answer 2>&1
 4. How do I create an "HERE" doc?
-cat > /srv/http/test.php <<EOF
-<?php phpinfo(); ?>
-EOF
-
+   See http://tldp.org/LDP/abs/html/here-docs.html
+   cat > /srv/http/test.php <<EOF
+   <?php phpinfo(); ?>
+   EOF
 5. What's a good Bash tutorial?
-http://tldp.org/LDP/abs/html/index.html [2011-01-13 TDW]
-
+  http://tldp.org/LDP/abs/html/index.html [2011-01-13 TDW]
