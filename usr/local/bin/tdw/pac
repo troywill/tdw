@@ -1,0 +1,6 @@
+#!/bin/bash
+set -o errexit
+set -o nounset
+
+COMMAND="sudo pacman --sync $1"
+echo $COMMAND && $COMMAND
