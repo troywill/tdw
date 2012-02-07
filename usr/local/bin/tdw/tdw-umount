@@ -2,11 +2,15 @@
 use warnings;
 use strict;
 
-my @mounts = qw( /mnt/media /dev/disk/by-label/root.thumb /mnt/media-nfs /home/troy/org-nfs /var/cache/pacman/pkg);
+my @mount_dirs = qw( /mnt/media /dev/disk/by-label/root.thumb /mnt/media-nfs /home/troy/org-nfs /var/cache/pacman/pkg);
 
-foreach my $mount ( @mounts ) {
+foreach my $mount ( @mount_dirs ) {
+    print "==> $mount <==\n";
     if ( -e $mount ) {
-	print "==> ";
-	print `sudo umount -v $mount`;
+	my $command = "sudo umount -v ${mount}";
+	print "==> $command ... ";
+	print `$command`;
+	print "-------------\n";
+	sleep 10;
     }
 }
