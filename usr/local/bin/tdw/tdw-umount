@@ -2,6 +2,7 @@
 use warnings;
 use strict;
 
+my $SLEEP = 2;
 my @mount_dirs = qw( /mnt/media /dev/disk/by-label/root.thumb /mnt/media-nfs /home/troy/org-nfs /var/cache/pacman/pkg);
 
 foreach my $mount ( @mount_dirs ) {
@@ -11,6 +12,6 @@ foreach my $mount ( @mount_dirs ) {
 	print "==> $command ... ";
 	print `$command`;
 	print "-------------\n";
-	sleep 10;
+	sleep $SLEEP;
     }
 }
