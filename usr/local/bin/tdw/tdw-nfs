@@ -1,12 +1,18 @@
 #!/bin/bash
 set -o nounset
 
-NFS_DIR='lady:/media'
-MOUNT_POINT='/mnt/media-nfs'
-sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}
-echo ${MOUNT_POINT}
+$SERVER='lady'
 
-NFS_DIR='lady:/var/cache/pacman/pkg'
-MOUNT_POINT='/var/cache/pacman/pkg'
-sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}
-echo ${MOUNT_POINT}
+do_mount () {
+#    sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}
+    sudo mount -o rw,nolock $1 $2
+}
+
+do_pacman_nfs () {
+    NFS_DIR='lady:/var/cache/pacman/pkg'
+    MOUNT_POINT='/var/cache/pacman/pkg'
+    sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}
+}
+
+do_mount $SERVER:/media /mnt/media-nfs
+do_mount $SERVER:/home/troy/org /home/troy/org-nfs
