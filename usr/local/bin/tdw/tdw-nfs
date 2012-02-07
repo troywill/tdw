@@ -5,7 +5,8 @@ SERVER='lady'
 
 do_mount () {
 #    sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}
-    sudo mount -o rw,nolock $1 $2
+    COMMAND="sudo mount -o rw,nolock $1 $2"
+    echo "==> ${COMMAND}" && ${COMMAND}
 }
 
 do_pacman_nfs () {
@@ -16,4 +17,5 @@ do_pacman_nfs () {
 }
 
 do_mount $SERVER:/media /mnt/media-nfs
-do_mount $SERVER:/home/troy/org /home/troy/org-nfs
+do_mount $SERVER:/export/org /home/troy/org-nfs
+do_pacman_nfs
