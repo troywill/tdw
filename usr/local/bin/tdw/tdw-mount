@@ -30,11 +30,3 @@ sub loop_disks () {
 	}
     };
 }
-
-print "--------------------------------------\n";
-system "$SUDO /sbin/fdisk -l /dev/sdb";
-
-
-# sudo mount 
-# sudo mount /dev/disk/by-label/Thai-1 /mnt/Thai-1
-
