@@ -11,7 +11,8 @@ do_mount () {
 do_pacman_nfs () {
     NFS_DIR='lady:/var/cache/pacman/pkg'
     MOUNT_POINT='/var/cache/pacman/pkg'
-    sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}
+    COMMAND="sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}"
+    echo "==> ${COMMAND}" && ${COMMAND}
 }
 
 do_mount $SERVER:/media /mnt/media-nfs
