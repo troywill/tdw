@@ -18,4 +18,5 @@ do_pacman_nfs () {
 
 do_mount $SERVER:/media /mnt/media-nfs
 do_mount $SERVER:/export/org /home/troy/org-nfs
+do_mount $SERVER:/export/torrent /home/troy/torrent
 do_pacman_nfs
