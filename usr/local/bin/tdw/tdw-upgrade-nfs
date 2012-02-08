@@ -5,5 +5,5 @@ MOUNT_POINT='/var/cache/pacman/pkg'
 sudo mount -o rw,nolock $NFS_DIR $MOUNT_POINT
 sudo pacman --sync --refresh
 sudo pacman --sync --clean    
-sudo pacman --sync --sysugrade    
+sudo pacman --sync --sysupgrade
 sudo umount $MOUNT_POINT
