@@ -1,0 +1,9 @@
+#!/bin/bash
+set -o nounset
+NFS_DIR='lady:/var/cache/pacman/pkg'
+MOUNT_POINT='/var/cache/pacman/pkg'
+sudo mount -o rw,nolock $NFS_DIR $MOUNT_POINT
+sudo pacman --sync --refresh
+sudo pacman --sync --clean    
+sudo pacman --sync --sysugrade    
+sudo umount $MOUNT_POINT
