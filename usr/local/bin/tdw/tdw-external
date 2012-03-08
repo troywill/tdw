@@ -2,8 +2,36 @@
 use warnings;
 use strict;
 
+my $sleep = 10;
+
+while (1) {
+    chomp(my $status = `cat /sys/class/drm/card0-VGA-1/status`);
+    print "=> $status\n";
+    if ( $status eq 'connected') {
+	my $internal_monitor = 'xrandr --output VGA1 --auto';
+	print "=> $internal_monitor";
+	system $internal_monitor;
+	print "\n";
+	my $external_command = 'xrandr --output LVDS1 --off';
+	print "=> $external_command";
+	system $external_command;
+    } else {
+	my $external_command = 'xrandr --output VGA1 --off';
+	print "$external_command\n";
+	system $external_command;
+	my $internal_monitor = 'xrandr --output LVDS1 --auto';
+	print "$internal_monitor\n";
+	system $internal_monitor;
+    }
+    sleep $sleep;
+}	
+
+exit;
+
+
+
 if ( $ARGV[0] == 1 ) {
-    my $internal_monitor = 'xrandr --output VGA1 --auto';
+    my $internal_monitor = 'xrandr --output VGA1 --off';
     system $internal_monitor;
     my $external_command = 'xrandr --output LVDS1 --auto';
     system $external_command;
@@ -15,4 +43,3 @@ if ( $ARGV[0] == 1 ) {
     print "$internal_monitor\n";
     system $internal_monitor;
 }
-

@@ -18,3 +18,5 @@ if ( $ping=~ /1 received/ ) {
 } else {
     print "Did NOT ping router\n";
 }    
+
+system("sudo perl-net-scan-wireless");
