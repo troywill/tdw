@@ -1,7 +1,12 @@
   -*- mode: org; fill-column:65 -*-
 * Q. Which line do I insert in a file to turn on org mode?
   A.   -*- mode: org; fill-column:65 -*-
-
+* Q. How to I mark program code
+  A. #+BEGIN_SRC emacs-lisp
+       (defun org-xor (a b)
+          "Exclusive or."
+          (if a (not b) b))
+     #+END_SRC
 
 
 
