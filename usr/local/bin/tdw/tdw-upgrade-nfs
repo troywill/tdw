@@ -6,4 +6,5 @@ sudo mount -o rw,nolock $NFS_DIR $MOUNT_POINT
 sudo pacman --sync --refresh
 sudo pacman --sync --sysupgrade
 sudo pacman --sync --clean
-sudo umount $MOUNT_POINT
+# sudo umount $MOUNT_POINT
+

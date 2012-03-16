@@ -4,6 +4,15 @@ use strict;
 my $audio_player = 'mplayer -nocache';
 my $playlist = 'http://minnesota.publicradio.org/tools/play/streams/the_current.pls';
 
+print "What are you going to do? ";
+chomp(my $input = <STDIN>);
+
+open(my $fh, ">>", "/tmp/5.txt")
+    or die "cannot open > output.txt: $!";
+
+print $fh $input, "\n";
+
+
 if ( $ARGV[0] ) {
     my $seconds = $ARGV[0] * 60;
     system ( "${audio_player} -endpos $seconds ${playlist} 2>/dev/null | grep ICY" );
