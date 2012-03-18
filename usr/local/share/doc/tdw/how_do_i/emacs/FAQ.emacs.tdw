@@ -1,3 +1,4 @@
+  -*- mode: org; fill-column:65 -*-
 1. How do I automatically follow a symbolic link to a version controlled file?
 (setq vc-follow-symlinks)
 
@@ -8,3 +9,10 @@ cp yaml-mode.el /usr/share/emacs/site-lisp/yaml-mode.el
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+3. How do I install Emacs on a computer running Windows 7?
+   1. [X] Pick the drive and a folder in which you want to install Emacs. I'll assume that it is C:\emacs
+   2. [X] Create an empty folder C:\emacs.
+   3. [X] Download http://ftp.gnu.org/gnu/windows/emacs/emacs-23.4-bin-i386.zip
+   4. [X] Extract to C:\emacs
+   5. [ ]] download a file that will customize your emacs
