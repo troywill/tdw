@@ -1,21 +1,19 @@
 #!/usr/bin/env perl
 use warnings;
 use strict;
-
 use LWP::Simple;
-
 # http://pyther.net/wp/2010/08/listen-to-iheartradio-without-flash/
-
 my $station = 'KFI-AM';
 my $url = "http://p2.${station}.ccomrcdn.com/player/player_dispatcher.html?section=radio&action=listen_live";
 my $page = get $url;
 open(my $out, '>', '/tmp/kfi') or die;
 print $out $page;
 close $out;
-
 $page =~ m/primary_location=\"(.*?)\"/;
-    
-
+print "=>$1<=\n";
+my $command = "mplayer -novideo -endpos 5:00 '" . $1 . "'";
+print $command, "\n";
+system $command;
 exit;
 __END__
 

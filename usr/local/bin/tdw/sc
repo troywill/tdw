@@ -2,10 +2,18 @@
 use warnings;
 use strict;
 
-system("pkill -15 chromium");
-system("pkill -9 chromium");
-system("ps auxf | grep chr");
-sleep 3;
+&kill_existing_chromium;
+
 system("rm -rvf .cache");
 chdir $ENV{'HOME'};
 system("chromium &");
+
+sub kill_existing_chromium {
+    system("pkill -15 chromium");
+    system("pkill -9 chromium");
+    system("ps auxf | grep chr");
+    sleep 3;
+}
+
+
+    

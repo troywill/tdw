@@ -1,0 +1,4 @@
+#!/bin/bash
+set -o errexit
+set -o nounset
+mplayer -ao null -speed .01 -fs $1
