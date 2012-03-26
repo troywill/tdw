@@ -3,8 +3,9 @@ set -o nounset
 NFS_DIR='lady:/var/cache/pacman/pkg'
 MOUNT_POINT='/var/cache/pacman/pkg'
 sudo mount -o rw,nolock $NFS_DIR $MOUNT_POINT
+sudo gem update --no-ri --no-rdoc
+cpan-outdated -p | cpanm --sudo
 sudo pacman --sync --refresh
 sudo pacman --sync --sysupgrade
 sudo pacman --sync --clean
 # sudo umount $MOUNT_POINT
-
