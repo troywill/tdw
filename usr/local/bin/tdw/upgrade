@@ -8,5 +8,5 @@ system("sudo pacman --sync --refresh");
 # system("sudo pacman --sync --clean");
 system("sudo pacman --sync --sysupgrade");
 system("sudo gem update --no-ri --no-rdoc");
-system("cpanm --sudo App::cpanoutdated");
+# system("cpanm --sudo App::cpanoutdated");
 system("cpan-outdated -p | cpanm --sudo");
