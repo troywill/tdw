@@ -1,11 +1,26 @@
 #!/bin/bash
 set -o nounset
-NFS_DIR='lady:/var/cache/pacman/pkg'
-MOUNT_POINT='/var/cache/pacman/pkg'
-sudo mount -o rw,nolock $NFS_DIR $MOUNT_POINT
-sudo gem update --no-ri --no-rdoc
-cpan-outdated -p | cpanm --sudo
-sudo pacman --sync --refresh
-sudo pacman --sync --sysupgrade
-sudo pacman --sync --clean
-# sudo umount $MOUNT_POINT
+
+upgrade_arch_linux () {
+    NFS_DIR='lady:/var/cache/pacman/pkg'
+    MOUNT_POINT='/var/cache/pacman/pkg'
+    sudo mount -o rw,nolock $NFS_DIR $MOUNT_POINT
+    sudo pacman --sync --refresh
+    sudo pacman --sync --sysupgrade
+    sudo pacman --sync --clean
+    sudo umount $MOUNT_POINT
+}
+
+upgrade_ruby_gems () {
+    sudo gem update --no-ri --no-rdoc
+}
+
+upgrade_perl_modules () {
+    echo "=> upgrading perl modules"
+    cpan-outdated -p | cpanm --sudo
+}
+
+
+echo "=> upgrading arch linux" && upgrade_arch_linux
+echo "=> upgrading ruby gems" && upgrade_ruby_gems
+echo "=> upgrading perl modules" && upgrade_perl_modules
