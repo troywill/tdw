@@ -1,14 +1,20 @@
 #!/bin/bash
 set -o nounset
 
-upgrade_arch_linux () {
+mount_nfs () {
     NFS_DIR='lady:/var/cache/pacman/pkg'
     MOUNT_POINT='/var/cache/pacman/pkg'
     sudo mount -o rw,nolock $NFS_DIR $MOUNT_POINT
+}
+
+umount_nfs () {
+    sudo umount $MOUNT_POINT
+}
+
+upgrade_arch_linux () {
     sudo pacman --sync --refresh
     sudo pacman --sync --sysupgrade
     sudo pacman --sync --clean
-    sudo umount $MOUNT_POINT
 }
 
 upgrade_ruby_gems () {
@@ -21,6 +27,8 @@ upgrade_perl_modules () {
 }
 
 
+# echo "=> mounting nfs" && mount_nfs
 echo "=> upgrading arch linux" && upgrade_arch_linux
+echo "=> umounting nfs" && umount_nfs
 echo "=> upgrading ruby gems" && upgrade_ruby_gems
 echo "=> upgrading perl modules" && upgrade_perl_modules
