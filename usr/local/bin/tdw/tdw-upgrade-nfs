@@ -26,8 +26,7 @@ upgrade_perl_modules () {
     cpan-outdated -p | cpanm --sudo
 }
 
-
-# echo "=> mounting nfs" && mount_nfs
+echo "=> mounting nfs" && mount_nfs
 echo "=> upgrading arch linux" && upgrade_arch_linux
 echo "=> umounting nfs" && umount_nfs
 echo "=> upgrading ruby gems" && upgrade_ruby_gems

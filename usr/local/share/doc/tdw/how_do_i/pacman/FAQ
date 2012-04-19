@@ -12,3 +12,5 @@ pacman --sync git
 pacman --sync base-devel
 5. How do I get a list of installed packages?
 pacman --query
+6. How do I find a package given that I know a file contained by a package
+install pkgtools then "sudo pkgfile --update" then finally pkgfile some_file

@@ -2,9 +2,8 @@
 use warnings;
 use strict;
 
-my $sleep = 10;
+my $sleep = 0;
 
-while (1) {
     chomp(my $status = `cat /sys/class/drm/card0-VGA-1/status`);
     print "=> $status\n";
     if ( $status eq 'connected') {
@@ -24,7 +23,6 @@ while (1) {
 	system $internal_monitor;
     }
     sleep $sleep;
-}	
 
 exit;
 

@@ -10,10 +10,10 @@ system("chromium &");
 
 sub kill_existing_chromium {
     system("pkill -15 chromium");
+    sleep 1;
     system("pkill -9 chromium");
+    sleep 1;
+    system("killall chromium");
+    sleep 1;
     system("ps auxf | grep chr");
-    sleep 3;
 }
-
-
-    
