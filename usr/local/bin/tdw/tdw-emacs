@@ -4,7 +4,15 @@ set -o nounset
 LISP_DIR=~/elisp
 GIT_DIR=~/git
 
-setup_org_mode () {
+setup_org_mode_from_git () {
+    cd $GIT_DIR
+    git clone git://orgmode.org/org-mode.git
+    cd org-mode && make && make doc
+    make prefix=/tmp lispdir=~/elisp/org-mode install
+}
+
+setup_org_mode_from_tarball () {
+    LATEST_TARBALL=$1
     cd $GIT_DIR
     git clone git://orgmode.org/org-mode.git
     cd org-mode && make && make doc
