@@ -75,7 +75,7 @@ tz () {
     echo "tar -xf $1" && tar -xf $1
 }
 
-alias dog='git pull; git commit -a; git push origin master'
+alias dog='git pull; git commit -a; git push -u origin master'
 alias doggy="git pull; git commit -a -m 'minor'; git push origin master"
 alias csb='cd ~/rcs/stowball && ./stowball-write-db-from-csv'
 alias f1='find . -cmin -1 -type f'
