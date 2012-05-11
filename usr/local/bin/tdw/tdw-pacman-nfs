@@ -1,0 +1,14 @@
+#!/bin/bash
+set -o nounset
+
+SERVER='lady'
+
+do_pacman_nfs () {
+    NFS_DIR='lady:/var/cache/pacman/pkg'
+    MOUNT_POINT='/var/cache/pacman/pkg'
+    COMMAND="sudo mount -o rw,nolock ${NFS_DIR} ${MOUNT_POINT}"
+    echo "==> ${COMMAND}" && ${COMMAND}
+}
+
+do_pacman_nfs
+
