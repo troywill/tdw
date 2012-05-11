@@ -9,7 +9,8 @@
 
 (setq vc-handled-backends nil)
 
-(load-file "~/.emacs.d/site-start.d/tdw-org-mode.el")
+(require 'org-install)
+
 (load-file "~/.emacs.d/site-start.d/tdw-web-browser.el")
 (load-file "~/.emacs.d/site-start.d/tdw-unicode.el")
 (load-file "~/.emacs.d/site-start.d/tdw-emms.el")
