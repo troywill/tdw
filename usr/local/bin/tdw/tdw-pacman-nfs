@@ -11,4 +11,3 @@ do_pacman_nfs () {
 }
 
 do_pacman_nfs
-

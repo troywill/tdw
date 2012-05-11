@@ -1,0 +1,7 @@
+#!/usr/bin/env perl
+use warnings;
+use strict;
+
+chdir $ENV{'HOME'} && die;
+my $shell_command = "rsync --archive --delete --progress --password-file ./password-file shilohsystem.com::rcs-tdw rcs-shiloh";
+print "==> $shell_command: " && system $shell_command;
