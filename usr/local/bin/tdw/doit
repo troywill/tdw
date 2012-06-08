@@ -1,5 +1,4 @@
 #!/bin/sh
-FILENAME="~/storage/doit.org"
-emacs ${FILENAME}
-
+FILENAME="~/org/doit.org"
+emacs -nw ${FILENAME}
 
