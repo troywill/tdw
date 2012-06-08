@@ -7,6 +7,7 @@ my $MOUNT = "/bin/mount";
 my %disks = ( 
     '/mnt/thai1' => '/dev/disk/by-label/Thai-1',
     '/mnt/thai2' => '/dev/disk/by-label/Thai-2',
+    '/mnt/root.wdc3' => '/dev/disk/by-label/root.wdc3',
     '/mnt/root.thumb' => '/dev/disk/by-label/root.thumb',
     '/mnt/media' => '/dev/disk/by-label/thumb.media'
 );
