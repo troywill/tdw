@@ -10,6 +10,14 @@
 (setq vc-handled-backends nil)
 
 (require 'org-install)
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sh . t)
+   (ruby . t)
+   (perl . t)
+   ))
+
 
 (load-file "~/.emacs.d/site-start.d/tdw-web-browser.el")
 (load-file "~/.emacs.d/site-start.d/tdw-unicode.el")
