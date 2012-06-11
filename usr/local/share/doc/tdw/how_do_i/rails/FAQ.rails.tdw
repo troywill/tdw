@@ -62,4 +62,6 @@ A9. site:http://api.rubyonrails.org text_area
  rails generate migration add_keep_to_listings keep:boolean
 
 * Q11. How do I make a stand alone Ruby program for a Rails application
-A11. require "config/environment.rb" ( See "24.1 A Stand-Alone Application Using Active Record" in the Agile book )
+A11. require "/path/to/config/environment.rb" ( See "24.1 A Stand-Alone Application Using Active Record" in the Agile book )
+     You could populate a table with something like 'Color.create(:name => "white")'
+
