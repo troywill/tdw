@@ -1,4 +1,4 @@
 #!/bin/sh
-FILENAME="~/org/doit.org"
-emacs -nw ${FILENAME}
+FILENAME="~/tmp/doit.org"
+emacs ${FILENAME}
 
