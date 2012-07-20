@@ -1,9 +1,9 @@
 -*- mode:org -*-
-* 1. How do I pass user_id with a hidden form field in Rails?
+* How do I pass user_id with a hidden form field in Rails?
 [Valid for Rails 3.01, October 22, 2010]
 [Reference: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-hidden_field]
 <div class="field"><%= f.label :user_id %><%= f.hidden_field :user_id, :value => session[:user_id] %></div>
-* 2. How do I make a year selection box?
+* How do I make a year selection box?
 http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html
 http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-select_year
 
@@ -18,16 +18,16 @@ However, this presents a problem when editing the record: the year value is not 
 
 This is what I ended up with:
 <%= select( "ad", "year", ["Choose Date"] + %w[2010.downto(1992)], {}) %>
-* 3. How do I add conditions in a find?
+* How do I add conditions in a find?
 <%= select("ad", "model_id", Model.find(:all).collect { |p| [p.name, p.id]}) %>
 Model.find(:all, :conditions => 'user_id=2' )
 <%= select("ad", "model_id", Model.find(:all, :conditions => "user_id = #{session[:user_id]}").collect { |p| [p.name, p.id]\
 }) %>
 
-* 4. How do I order a find in a controller?
+* How do I order a find in a controller?
 @shows = Show.find(:all, :order => "date")
 
-* 5. How do I pass an argument to a partial view?
+* How do I pass an argument to a partial view?
 [Reference: http://api.rubyonrails.org/classes/ActionView/Partials.html ]
 In a template for Advertiser#account:
 
@@ -45,23 +45,25 @@ In another template for Advertiser#buy, we could have:
 6. How do I ensure uniqueness on two columns? [2010-10-23]
 validates_uniqueness_of :name, :scope => :user_id
 
-* Q7. How do specify currency in a scaffold and model?
+* How do specify currency in a scaffold and model?
 A7[2010-10-24].
 generate scaffold product price:decimal
 t.decimal :price, :precision => 8, :scale => 2
 
-* Q8. How do I virual hosts with Apache and Phusion Passenger behind a router?
-
-* Q9. How do I change the size of a text field / text area field?
+* How do I virtual hosts with Apache and Phusion Passenger behind a router?
+* How do I change the size of a text field / text area field?
 A9. site:http://api.rubyonrails.org text_area
     http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-text_area [2010-10-28]
     :cols => 20, :rows => 40
 
-* Q10. Add a column with a migration?
+* Add a column with a migration?
  rails generate migration add_quantity_to_line_item quantity:integer
  rails generate migration add_keep_to_listings keep:boolean
-
-* Q11. How do I make a stand alone Ruby program for a Rails application
+* How do I make a stand alone Ruby program for a Rails application
 A11. require "/path/to/config/environment.rb" ( See "24.1 A Stand-Alone Application Using Active Record" in the Agile book )
      You could populate a table with something like 'Color.create(:name => "white")'
+
+* How do I put a Phusion Passenger application in development node?
+  Add this to your virtul host configuration file:
+  RailsEnv development
 
