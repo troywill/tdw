@@ -2,10 +2,10 @@
 use warnings;
 use strict;
 
-system("sudo mount -v /dev/disk/by-label/root.thumb /mnt/root.thumb/");
-print "refresh\n";
+if ( -e '/dev/disk/by-label/root.thumb' ) {
+    system("sudo mount -v /dev/disk/by-label/root.thumb /mnt/root.thumb/");
+}
 system("sudo pacman --sync --refresh");
-# system("sudo pacman --sync --clean");
 system("sudo pacman --sync --sysupgrade");
 system("sudo gem update --no-ri --no-rdoc");
 # system("cpanm --sudo App::cpanoutdated");
