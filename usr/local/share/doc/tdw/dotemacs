@@ -2,8 +2,8 @@
 
 (setq load-path (cons (expand-file-name "~/elisp") load-path))
 
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;; (require 'yaml-mode)
+;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 (put 'upcase-region 'disabled nil)
 
@@ -47,3 +47,6 @@
   )
 
 (put 'downcase-region 'disabled nil)
+
+(fset 'org-list-to-bottom
+   "\C-a\C-c\C-c\C-@\C-n\C-w\C-[>\C-r[\C-m\C-e\C-m\C-y\C-p\C-c\C-c\C-c\C-c\C-[<\C-s[ \C-m\C-a\C-@\C-n\C-p\C-@\C-e")
