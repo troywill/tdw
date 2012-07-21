@@ -4,7 +4,7 @@ https://wiki.archlinux.org/index.php/Pacman_Tips
 pacman --sync --refresh
 2. How do I search for Git?
 pacman --sync --refresh
-pacman --syn --search git
+pacman --sync --search git
 3. How do I install Git?
 pacman --sync git
 ( Installs run-parts, ca-cerfificates, curl, perl-error, git )
