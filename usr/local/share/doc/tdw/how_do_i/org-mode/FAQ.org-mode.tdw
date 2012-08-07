@@ -1,12 +1,37 @@
   -*- mode: org; fill-column:65 -*-
-* Q. Which line do I insert in a file to turn on org mode?
-  A.   -*- mode: org; fill-column:65 -*-
-* Q. How to I mark program code?
-  A. See http://orgmode.org/manual/Working-With-Source-Code.html
+* FAQs  
+** Which line do I insert in a file to turn on org mode?
+  - -*- mode: org; fill-column:65 -*-
+** How to I mark program code?
+  - See http://orgmode.org/manual/Working-With-Source-Code.html
      #+BEGIN_SRC emacs-lisp
-       (defun org-xor (a b)
-          "Exclusive or."
-          (if a (not b) b))
+(defun org-xor (a b)
+    "Exclusive or."
+    (if a (not b) b))
      #+END_SRC
 
+** What types of links are available?
+   - bbdb:
+   - bibtex:
+   - docview:
+   - doi:
+   - elisp:
+   - file+emacs:
+   - file+sys:
+   - file:
+   - ftp:
+   - gnus:
+   - http:
+   - https:
+   - info:
+   - irc:
+   - mailto:
+   - message:
+   - mew:
+   - mhe:
+   - news:
+   - rmail:
+   - shell:
+   - vm:
+   - wl:
 

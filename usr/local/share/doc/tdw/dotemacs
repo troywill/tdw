@@ -5,6 +5,9 @@
 ;; (require 'yaml-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+(require 'cperl-mode)
+(add-to-list 'auto-mode-alist '("\\.pl$" . cperl-mode))
+
 (put 'upcase-region 'disabled nil)
 
 (setq vc-handled-backends nil)
