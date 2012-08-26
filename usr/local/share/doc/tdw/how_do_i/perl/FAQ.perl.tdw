@@ -45,7 +45,11 @@ select($oldh);
 
 * Arrays
 ** How do I find the length of an array?
-   - See "Arrays" in perlintro or
-   - see perldata
+   - See "Arrays" in perlintro or perldata
    #+begin_src perl
    #+end_src perl
+* Strings
+** How do print multiple characters?
+   - print '-' x 80;             # print row of dashes
+   - Reference: Multiplicative Operators in perlop man page
+     

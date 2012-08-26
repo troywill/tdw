@@ -1,17 +1,19 @@
-0. What is a good tips page?
+  -*- mode: org; fill-column:65 -*-
+* What is a good tips page?
 https://wiki.archlinux.org/index.php/Pacman_Tips
-1. How do I sync the database?
+* How do I sync the database?
 pacman --sync --refresh
-2. How do I search for Git?
+* How do I search for Git?
 pacman --sync --refresh
 pacman --sync --search git
-3. How do I install Git?
+* How do I install Git?
 pacman --sync git
 ( Installs run-parts, ca-cerfificates, curl, perl-error, git )
-4. Is there a meta-package for development?
+* Is there a meta-package for development?
 pacman --sync base-devel
-5. How do I get a list of installed packages?
+* How do I get a list of installed packages?
 pacman --query
-6. How do I find a package given that I know a file contained by a package
+* How do I find a package given that I know a file contained by a package
 install pkgfile then "sudo pkgfile --update" then finally pkgfile some_file
 
+* How do I find which files a package contains?
