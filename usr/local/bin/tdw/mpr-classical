@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 my $audio_player = 'mplayer';
-my $duration = '30:00';
+my $duration = '50:00';
 my $playlist = 'http://minnesota.publicradio.org/tools/play/streams/classical.pls';
 
 

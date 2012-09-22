@@ -3,7 +3,7 @@ use warnings;
 use strict;
 use LWP::Simple;
 
-my $duration = '30:00';
+my $duration = '50:00';
 $duration = $ARGV[0] if defined($ARGV[0]);
 
 # http://pyther.net/wp/2010/08/listen-to-iheartradio-without-flash/
