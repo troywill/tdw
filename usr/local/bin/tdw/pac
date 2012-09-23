@@ -1,6 +1,24 @@
-#!/bin/bash
-set -o errexit
-set -o nounset
+#!/usr/bin/env perl
+use warnings;
+use strict;
 
-COMMAND="sudo pacman --sync $1"
-echo $COMMAND && $COMMAND
+# my @args = ("sudo pacman --sync", $ARGV[1] );
+# @args = ("pacman" );
+system("sudo pacman --sync $ARGV[0]");
+
+if ($? == -1) {
+    print "failed to execute: $!\n";
+}
+elsif ($? & 127) {
+    printf "child died with signal %d, %s coredump\n",
+    ($? & 127),  ($? & 128) ? 'with' : 'without';
+}
+elsif ($? & 256) {
+    print "256: ";
+    my $command = "pacman --sync --search $ARGV[0]";
+    print $command;
+    system $command;
+}
+else {
+    printf "child exited with value %d\n", $? >> 8;
+}

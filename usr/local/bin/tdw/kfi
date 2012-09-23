@@ -15,7 +15,7 @@ print $out $page;
 close $out;
 $page =~ m/primary_location=\"(.*?)\"/;
 print "=>$1<=\n";
-my $command = "mplayer -novideo -endpos $duration '" . $1 . "'";
+my $command = "mplayer -quiet -ao alsa -novideo -endpos $duration '" . $1 . "'";
 print "=> $command\n";
 system $command;
 
