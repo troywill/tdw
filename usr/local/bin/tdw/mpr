@@ -1,0 +1,2 @@
+#!/bin/sh
+mplayer -ao alsa -endpos 5:00 http://206.221.211.11
