@@ -16,8 +16,9 @@ elsif ($? & 127) {
 elsif ($? & 256) {
     print "256: ";
     my $command = "pacman --sync --search $ARGV[0]";
-    print $command;
+    print "$command\n";
     system $command;
+    print "Do you want to run pkgfile $ARGV[0]?\n";
 }
 else {
     printf "child exited with value %d\n", $? >> 8;

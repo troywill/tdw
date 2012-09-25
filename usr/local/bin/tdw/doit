@@ -1,4 +1,4 @@
 #!/bin/sh
 FILENAME="~/tmp/doit.org"
-emacs ${FILENAME}
-
+emacs --no-window-system ${FILENAME}
+kfi 5:00
