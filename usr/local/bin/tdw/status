@@ -12,11 +12,12 @@ my $address = inet_ntoa(
     );
 print "$address\n";
 
-my $ping = `ping -c1 192.168.1.1`;
+my $ping = `ping -c1 192.168.15.1`;
 if ( $ping=~ /1 received/ ) {
     print "pinged router\n";
 } else {
     print "Did NOT ping router\n";
 }    
 
-system("sudo perl-net-scan-wireless");
+# system("sudo perl-net-scan-wireless");
+

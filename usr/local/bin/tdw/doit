@@ -1,4 +1,16 @@
-#!/bin/sh
-FILENAME="~/tmp/doit.org"
-emacs --no-window-system ${FILENAME}
-kfi 5:00
+#!/usr/bin/env perl
+use Modern::Perl;
+my $minutes = $ARGV[0] or die "minutes?";
+my @venues;
+$venues[0] = "kfi $minutes &";
+$venues[1] = "mpr-the-current $minutes &";
+my $venue = $venues[ rand @venues ];
+say "=> $venue";
+system($venue);
+my $seconds = $minutes * 60;
+sleep $seconds;
+system("killall mplayer");
+sleep 1;
+my $video = "mplayer -zoom -xy 0.25 -shuffle ~/video/f/*";
+say "=> $video";
+system($video);

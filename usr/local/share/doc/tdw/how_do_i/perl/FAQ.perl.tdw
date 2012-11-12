@@ -7,28 +7,31 @@ printf("The current date is %04d %02d %02d\n", $year+1900, $month+1, $day);
    #+end_src perl
 ** How do I create a "Here Doc?"
    - See http://en.wikipedia.org/wiki/Heredoc
-   #+begin_src perl
-my $sender = "Buffy the Vampire Slayer";
-my $recipient = "Spike";
-print <<"END";
-Dear $recipient, 
- 
-I wish you to leave Sunnydale and never return.
- 
-Not Quite Love,
-$sender
- 
-END
-
-print <<'END';
-Dear $recipient,
- 
-I wish you to leave Sunnydale and never return.
- 
-Not Quite Love,
-$sender
-END
+   #+begin_src perl :results output
+     my $sender = "Buffy the Vampire Slayer";
+     my $recipient = "Spike";
+     print <<"END";
+     Dear $recipient, 
+      
+     I wish you to leave Sunnydale and never return.
+      
+     Not Quite Love,
+     $sender
+      
+     END
+     
+     print <<'END';
+     Dear $recipient,
+      
+     I wish you to leave Sunnydale and never return.
+      
+     Not Quite Love,
+     $sender
+     END
    #+end_src perl
+
+   #+RESULTS:
+
 ** How do I create a module template?
 ** How do replace words in many files?
    - See http://wiki.hypexr.org/wikka.php?wakka=PerlFindReplace

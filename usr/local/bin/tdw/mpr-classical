@@ -2,14 +2,13 @@
 use warnings;
 use strict;
 
+my $minutes = $ARGV[0] or die "minutes?";
+
 my $audio_player = 'mplayer';
-my $duration = '50:00';
+my $duration = $minutes . ":00";
+
 my $playlist = 'http://minnesota.publicradio.org/tools/play/streams/classical.pls';
 
-
-if (defined($ARGV[0])) {
-    $duration = $ARGV[0];
-}
 
 my $shell_command = '';
 

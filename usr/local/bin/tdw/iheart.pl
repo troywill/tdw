@@ -5,8 +5,11 @@ use LWP::Simple;
 
 my $station = 'KIIS-FM';
 $station = $ARGV[0] if defined($ARGV[0]);
+&print_line;
 print "Station: $station\n";
-my $duration = '5:00';
+print `date`;
+&print_line;
+my $duration = '50:00';
 $duration = $ARGV[1] if defined($ARGV[1]);
 
 # http://pyther.net/wp/2010/08/listen-to-iheartradio-without-flash/
@@ -17,6 +20,14 @@ print $out $page;
 close $out;
 $page =~ m/primary_location=\"(.*?)\"/;
 print "=>$1<=\n";
+
 my $command = "mplayer -novideo -ao alsa -endpos $duration '" . $1 . "'";
+&print_line;
 print "=> $command\n";
+&print_line;
 system $command;
+
+sub print_line {
+    print "-" x 60, "\n";
+}
+

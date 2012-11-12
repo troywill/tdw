@@ -9,4 +9,6 @@ system("sudo pacman --sync --refresh");
 system("sudo pacman --sync --sysupgrade");
 system("sudo gem update --no-ri --no-rdoc");
 # system("cpanm --sudo App::cpanoutdated");
-system("cpan-outdated -p | cpanm --sudo");
+system("cpan-outdated -p | grep -v SVN::Core | cpanm --sudo");
+system("cpan-outdated --verbose");
+

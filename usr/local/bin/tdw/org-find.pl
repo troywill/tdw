@@ -5,6 +5,14 @@ use strict;
 my $search_term = $ARGV[0] or die;
 my $search_directory = "$ENV{HOME}/org";
 
+system("ack $search_term $search_directory");
+
+
+
+__END__
+
+
+
 &search_filenames( $search_term );
 &grep_files( $search_term );
 

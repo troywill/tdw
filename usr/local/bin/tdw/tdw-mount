@@ -10,12 +10,9 @@ my %disks = (
     '/mnt/root.wdc3' => '/dev/disk/by-label/root.wdc3',
     '/mnt/root.thumb' => '/dev/disk/by-label/root.thumb',
     '/mnt/media' => '/dev/disk/by-label/thumb.media',
-<<<<<<< HEAD
-    '/mnt/sd2g' => '/dev/disk/by-label/sd2g'
-=======
+    '/mnt/sd2g' => '/dev/disk/by-label/sd2g',
     '/mnt/sanyo' => '/dev/disk/by-label/XACTI\x20HD1A',
     '/mnt/sanyo' => '/dev/disk/by-label/XACTI\\x20HD1A'
->>>>>>> 0c89f63230a034cce6dcb7e53de3d18a807c30fc
 );
 
 &loop_disks(%disks);

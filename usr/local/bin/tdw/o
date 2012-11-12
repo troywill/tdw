@@ -1,0 +1,6 @@
+#!/usr/bin/env perl
+my $master_org_file = $ENV{"HOME"} . '/master.org';
+my $shiloh_system = $ENV{"HOME"} . '/SHILOHSYSTEM/software';
+print "[$master_org_file]";
+system ("emacs $shiloh_system $master_org_file &");
+
