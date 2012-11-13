@@ -12,6 +12,8 @@ open(my $neworg, ">", $backup)
     or die "Can't open $backup for writing: $!";
 while (<$oldorg>) {
     s/$regexp/$replacement/;
+    s/\[X\]/[ ]/g;
+    s/\[\d+\/\d+]/[\/]/g;
     print $neworg $_ or die "can't write $neworg: $!";
 }
 
