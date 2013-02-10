@@ -1,3 +1,5 @@
+ (require 'twittering-mode)
+
 (setq vc-follow-symlinks)
 
 (setq load-path (cons (expand-file-name "~/elisp") load-path))
