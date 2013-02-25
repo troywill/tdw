@@ -4,7 +4,8 @@ use strict;
 my $SUDO = "/usr/bin/sudo";
 my $MOUNT = "/bin/mount";
 
-my %disks = ( 
+my %disks = (
+    '/mnt/sandisk' => '/dev/disk/by-label/SANSA\x20CLIPPFOO',
     '/mnt/root.thai1' => '/dev/disk/by-label/root.thai1',
     '/mnt/thai2' => '/dev/disk/by-label/Thai-2',
     '/mnt/root.wdc3' => '/dev/disk/by-label/root.wdc3',
@@ -12,7 +13,8 @@ my %disks = (
     '/mnt/media' => '/dev/disk/by-label/thumb.media',
     '/mnt/sd2g' => '/dev/disk/by-label/sd2g',
     '/mnt/sanyo' => '/dev/disk/by-label/XACTI\x20HD1A',
-    '/mnt/sanyo' => '/dev/disk/by-label/XACTI\\x20HD1A'
+    '/mnt/sanyo' => '/dev/disk/by-label/XACTI\\x20HD1A',
+    '/mnt/sandisk' => '/dev/disk/by-label/SANSA\x20CLIPP'
 );
 
 &loop_disks(%disks);
@@ -21,8 +23,9 @@ sub loop_disks () {
     my %hash = @_;
     foreach my $key ( keys %hash ) {
 	my ( $mount_point, $partition ) = ( $key, $hash{$key} );
+	print "[$mount_point][$partition]\n";
 	if ( -e $partition ) {
-	    my $command = "$SUDO $MOUNT $partition $mount_point";
+	    my $command = "$SUDO $MOUNT \'$partition\' \'$mount_point\'";
 	    print "=> $command\n";
 	    if ( !-e $mount_point ) {
 		print "$mount_point DOES NOT EXIST\n";
@@ -31,6 +34,6 @@ sub loop_disks () {
 		system $command;
 	    }
 	    system $command;
-	}
-    };
+	};
+    }
 }
