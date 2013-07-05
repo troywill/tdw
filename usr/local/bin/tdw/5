@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 # The current
-my $audio_player = "mplayer -nocache -quiet -endpos 5:00 http://minnesota.publicradio.org/tools/play/streams/the_current.pls 2>/dev/null | grep ICY";
+my $audio_player = "mplayer -allow-dangerous-playlist-parsing -nocache -quiet -endpos 5:00 http://minnesota.publicradio.org/tools/play/streams/the_current.pls 2>/dev/null | grep ICY";
 
 print "What are you going to do? ";
 chomp(my $input = <STDIN>);
