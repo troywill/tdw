@@ -13,7 +13,7 @@ my $playlist = 'http://minnesota.publicradio.org/tools/play/streams/classical.pl
 my $shell_command = '';
 
 if ( $audio_player eq 'mplayer' ) {
-    $shell_command = "${audio_player} -endpos $duration ${playlist} 2>/dev/null | grep ICY";
+    $shell_command = "${audio_player} -allow-dangerous-playlist-parsing -endpos $duration ${playlist} 2>/dev/null | grep ICY";
 }
 
 print "=> $shell_command\n";
