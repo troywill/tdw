@@ -5,10 +5,26 @@ use strict;
 if ( -e '/dev/disk/by-label/root.thumb' ) {
     system("sudo mount -v /dev/disk/by-label/root.thumb /mnt/root.thumb/");
 }
-system("sudo pacman --sync --refresh");
-system("yes 'Y' | sudo pacman --sync --clean");
-system("sudo pacman --sync --sysupgrade");
-system("sudo gem update --no-ri --no-rdoc");
 # system("cpanm --sudo App::cpanoutdated");
-system("cpan-outdated -p | grep -v SVN::Core | cpanm --sudo");
-system("cpan-outdated --verbose");
+
+update_arch();
+update_ruby_gems();
+update_perl();
+
+sub update_arch {
+    print "Updating Arch Linux\n", "-" x 60, "\n";
+    system("sudo pacman --sync --refresh");
+    system("yes 'Y' | sudo pacman --sync --clean");
+    system("sudo pacman --sync --sysupgrade");
+}
+
+sub update_ruby_gems {
+    print "Updating Ruby Gems\n", "-" x 60, "\n";
+    system("sudo gem update --no-ri --no-rdoc");
+}
+
+sub update_perl {
+    print "Updating Perl Modules\n", "-" x 60, "\n";
+    system("cpan-outdated -p | grep -v SVN::Core | cpanm --sudo");
+    system("cpan-outdated --verbose");
+}
