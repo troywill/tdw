@@ -79,6 +79,7 @@ alias dog='git pull; git commit -a; git push -u origin master'
 alias doggy="git pull; git commit -a -m 'minor'; git push origin master"
 alias csb='cd ~/rcs/stowball && ./stowball-write-db-from-csv'
 alias f1d='find . -cmin -1440 -type f'
+alias f1w='find . -cmin -10080 -type f'
 alias f1='find . -cmin -1 -type f'
 alias d1='find . -cmin -1 -type d'
 alias f5='find . -cmin -5 -type f'
